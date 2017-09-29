@@ -15,34 +15,20 @@ public class HealthScript : MonoBehaviour {
 	/// Ennemi ou joueur ?
 	/// </summary>
 	public bool isEnemy = true;
-	public bool isBorder = false;
-    public bool isFire = false;
+    public bool isShot = false;
     public bool isCharacter = false;
     
-	private Animator Death_animator;
+	private Animator myAnimator;
 	private EnemyScript enemyScript;
 
 
 
     void Start(){
-		Death_animator = gameObject.GetComponent<Animator> ();
+		myAnimator = gameObject.GetComponent<Animator> ();
         maxhp = hp;
-		if (isEnemy) {
-            if (!isFire)
-            {
-                enemyScript = gameObject.GetComponent<EnemyScript>();
-            }
-            else
-            {
-                //Death_animator.SetInteger("enemy",1);
-            }
-        }
-        else
+		if (isEnemy && !isShot)
         {
-            if (isFire)
-            {
-               // Death_animator.SetBool("goku", true);
-            }
+            enemyScript = gameObject.GetComponent<EnemyScript>();
         }
 	}
 
@@ -58,50 +44,36 @@ public class HealthScript : MonoBehaviour {
 			{
 				hp -= shot.damage;
 
-                // Destruction du projectile
-                // On détruit toujours le gameObject associé
-                // sinon c'est le script qui serait détruit avec ""this""
-                /*if (!shot.isBorder) {
-					Destroy (shot.gameObject);
-				}*/
                 if (isCharacter)
                 {
-                    Death_animator.SetTrigger("hurt");
-                    //GameObject hpmask = GameObject.Find("hpmask");
-                    //float barsize = hpmask.GetComponent<BoxCollider2D>().size.x;
-                    float percent = (shot.damage)/(float)maxhp;
-                    //Vector3 bar_move = new Vector3(-barsize * percent, 0, 0);
-                    //hpmask.transform.Translate(bar_move);
-                    BarScript.MoveHealthBar(-percent);
-
+                    myAnimator.SetTrigger("hurt");
                 }
 
-                SoundEffectsHelper.Instance.MakeExplosionSound();
-                if (hp <= 0 && !isBorder)
+                if (hp <= 0)
 				{
                     gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-                    if (isEnemy && !isFire)
+                    gameObject.GetComponent<MoveScript>().enabled = false;
+                    if (isEnemy && !isShot)
                     {
                         ScoreScript.score += score_value;
                     }
 
-					if (Death_animator != null) {
-                        Death_animator.SetTrigger ("dead");
-						if (isEnemy && !isFire) {
+					if (myAnimator != null) {
+                        myAnimator.SetTrigger ("dead");
+                        SoundEffectsHelper.Instance.MakeExplosionSound();
+                        if (isEnemy && !isShot)
+                        {
 							enemyScript.setDead();
 						}
-						Destroy (gameObject, Death_animator.GetCurrentAnimatorClipInfo(0).Length);
+						Destroy (gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
 
                         if (isCharacter)
                         {
-                            Debug.Log("wait");
-                            StartCoroutine(wait((float)(Death_animator.GetCurrentAnimatorClipInfo(0).Length*0.95)));                            
-                            /*Menu_death menu = FindObjectOfType<Menu_death>();
-                            menu.PopDeathMenu();*/
+                            myAnimator.SetTrigger("dead");
+                            Destroy(gameObject, 5);
                         }
-					} else {
-						// Destruction !
-						
+					}
+                    else {
 						Destroy (gameObject);
 					}
 				}
@@ -109,12 +81,8 @@ public class HealthScript : MonoBehaviour {
 		}
 	}
 
-    IEnumerator wait(float t)
+    public float GetMaxHp()
     {
-        yield return new WaitForSeconds(t);
-        //Debug.Log("let's go");
-        Menu_death menu = FindObjectOfType<Menu_death>();
-        menu.PopDeathMenu();
-       // Menu_death.Instance.PopDeathMenu();
+        return maxhp;
     }
 }
