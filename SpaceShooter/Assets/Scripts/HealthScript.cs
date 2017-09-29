@@ -64,7 +64,10 @@ public class HealthScript : MonoBehaviour {
                         Debug.Log(gameObject);
                         if (isEnemy && !isShot)
                         {
-							enemyScript.setDead();
+                            if(enemyScript)
+                            {
+                                enemyScript.setDead();
+                            }							
                             Destroy(gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
                         }						
                         
@@ -77,13 +80,16 @@ public class HealthScript : MonoBehaviour {
                         Destroy (gameObject);
 					}
                     GetComponent<PolygonCollider2D>().enabled = false;
-                    GetComponent<MoveScript>().enabled = false;
+                    if (GetComponent<MoveScript>())
+                    {
+                        GetComponent<MoveScript>().enabled = false;
+                    }
                 }
 			}
 		}
 	}
 
-    public float GetMaxHp()
+    public int GetMaxHp()
     {
         return maxhp;
     }

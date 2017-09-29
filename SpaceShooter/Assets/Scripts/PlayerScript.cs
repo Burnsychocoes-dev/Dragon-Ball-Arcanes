@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour {
 	/// </summary>
 	// Use this for initialization
 	private Rigidbody2D rigidbody;
+    private HealthScript health;
     private WeaponScript weapon;
 	private Animator animator;
     public Vector2 speed = new Vector2(50, 50);
@@ -31,6 +32,7 @@ public class PlayerScript : MonoBehaviour {
     void Start () {
 		rigidbody = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
+        health = GetComponent<HealthScript>();
         weapon = GetComponentInChildren<WeaponScript>();
         mana_max = mana;
         tp_cd_count = 0;
@@ -87,8 +89,25 @@ public class PlayerScript : MonoBehaviour {
 
     }
 
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        ItemScript item = collider.gameObject.GetComponent<ItemScript>();
+        if (item != null)
+        { 
+            switch (item.GetItemName())
+            {
+                case ItemScript.ItemName.senzu:
+                    health.hp = health.GetMaxHp();
+                    break;
+                case ItemScript.ItemName.capsuleEnergy:
+                    mana = mana_max;
+                    break;
+            }
+            Destroy(collider.gameObject);
+        }
+    }
 
-    public void HandleMovement(float horizontal, float vertical)
+        public void HandleMovement(float horizontal, float vertical)
     {
         // 4 - Calcul du mouvement
         movement = new Vector2(
