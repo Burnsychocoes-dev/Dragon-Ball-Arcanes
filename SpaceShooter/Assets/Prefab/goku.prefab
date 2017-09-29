@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 10, y: 10}
   mana: 1000
-  mana_regen: 10
+  mana_regen: 20
   tp_cd: 0.25
   tp_mana_cost: 50
 --- !u!114 &114638173803329254
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 4053488503514916, guid: 10035003eb8d505428ae685712e84f25, type: 2}
-  shootingRate: 0.35
+  shootingRate: 0.25
   isEnemy: 0
   mana_cost: 10
 --- !u!114 &114828669628724288

@@ -151,6 +151,11 @@ Prefab:
       propertyPath: m_Name
       value: burter_moving
       objectReference: {fileID: 0}
+    - target: {fileID: 114771701385874654, guid: 9aa3524dd1d915649a48a4ff56e403a7,
+        type: 2}
+      propertyPath: speed.x
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9aa3524dd1d915649a48a4ff56e403a7, type: 2}
   m_IsPrefabParent: 0
@@ -356,16 +361,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114855356235215974, guid: b5d7ac72afdf6e74fae89630a9420d05,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114204462058354906, guid: b5d7ac72afdf6e74fae89630a9420d05,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5d7ac72afdf6e74fae89630a9420d05, type: 2}
   m_IsPrefabParent: 0
@@ -473,11 +468,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4018259070115578, guid: 982f15a28d326c344862b6da6bd27c8b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.1
+      value: 4.86
       objectReference: {fileID: 0}
     - target: {fileID: 4018259070115578, guid: 982f15a28d326c344862b6da6bd27c8b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.55
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 4018259070115578, guid: 982f15a28d326c344862b6da6bd27c8b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -502,6 +497,11 @@ Prefab:
     - target: {fileID: 4018259070115578, guid: 982f15a28d326c344862b6da6bd27c8b, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114430709963225238, guid: 982f15a28d326c344862b6da6bd27c8b,
+        type: 2}
+      propertyPath: characterLockInit
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 982f15a28d326c344862b6da6bd27c8b, type: 2}
@@ -4082,11 +4082,31 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 114338374257775384, guid: aa783f6a678200f41877ca31b537110f,
+    - target: {fileID: 114283059307252036, guid: aa783f6a678200f41877ca31b537110f,
         type: 2}
-      propertyPath: teleportationSound
+      propertyPath: spawnPoints.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: fc826ce8102969247a5e0021186d13d1, type: 3}
+      objectReference: {fileID: 1373911522}
+    - target: {fileID: 114283059307252036, guid: aa783f6a678200f41877ca31b537110f,
+        type: 2}
+      propertyPath: spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 654315438}
+    - target: {fileID: 114283059307252036, guid: aa783f6a678200f41877ca31b537110f,
+        type: 2}
+      propertyPath: spawnPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1395567440}
+    - target: {fileID: 114283059307252036, guid: aa783f6a678200f41877ca31b537110f,
+        type: 2}
+      propertyPath: spawnPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1431595259}
+    - target: {fileID: 114283059307252036, guid: aa783f6a678200f41877ca31b537110f,
+        type: 2}
+      propertyPath: spawnPoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 175551431}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa783f6a678200f41877ca31b537110f, type: 2}
   m_IsPrefabParent: 0
@@ -4216,7 +4236,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1159726219}
-  - component: {fileID: 1159726218}
   m_Layer: 0
   m_Name: SpawnScript
   m_TagString: Untagged
@@ -4224,26 +4243,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1159726218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1159726217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1369cba1a420f94bb57e14f9086b026, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawn_cd: 2
-  mob_level_1: {fileID: 1783596375111766, guid: e51aedfef13435f4081ec9a5e13763f3,
-    type: 2}
-  spawnPoints:
-  - {fileID: 1373911522}
-  - {fileID: 654315438}
-  - {fileID: 1395567440}
-  - {fileID: 1431595259}
-  - {fileID: 175551431}
 --- !u!4 &1159726219
 Transform:
   m_ObjectHideFlags: 0

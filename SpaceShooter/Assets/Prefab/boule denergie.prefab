@@ -148,10 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
-  score_value: 1
+  score_value: 0
   isEnemy: 0
-  isBorder: 0
-  isFire: 1
+  isShot: 0
   isCharacter: 0
 --- !u!114 &114609409671240400
 MonoBehaviour:
