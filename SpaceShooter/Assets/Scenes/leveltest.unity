@@ -446,41 +446,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114097491850627740, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
-        type: 2}
-      propertyPath: hp
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357398706630790, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
-        type: 2}
-      propertyPath: mana
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357398706630790, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
-        type: 2}
-      propertyPath: speed.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357398706630790, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
-        type: 2}
-      propertyPath: speed.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114952747005329376, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
-        type: 2}
-      propertyPath: healthBarContent
-      value: 
-      objectReference: {fileID: 496291212}
     - target: {fileID: 114952747005329376, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
         type: 2}
       propertyPath: manaBarContent
       value: 
       objectReference: {fileID: 1316563676}
-    - target: {fileID: 114097491850627740, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
+    - target: {fileID: 114952747005329376, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
         type: 2}
-      propertyPath: isCharacter
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: healthBarContent
+      value: 
+      objectReference: {fileID: 496291212}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27e22f6f8e4ad8547aa9bb766b02f508, type: 2}
   m_IsPrefabParent: 0
