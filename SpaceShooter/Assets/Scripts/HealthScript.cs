@@ -46,9 +46,7 @@ public class HealthScript : MonoBehaviour {
 
                 if (isCharacter)
                 {
-                    myAnimator.SetTrigger("hurt");
-                    
-
+                    myAnimator.SetTrigger("hurt");           
                 }
 
                 if (hp <= 0)
@@ -60,6 +58,7 @@ public class HealthScript : MonoBehaviour {
                     }
 
 					if (myAnimator != null) {
+                        myAnimator.SetTrigger("dead");
                         SoundEffectsHelper.Instance.MakeExplosionSound();
                         Debug.Log("Je vais mourir");
                         Debug.Log(gameObject);
@@ -71,14 +70,10 @@ public class HealthScript : MonoBehaviour {
                         
                         if (isCharacter)
                         {
-                            
-                            Destroy(gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
-                            
-
+                            Destroy(gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length*1.5f);
                         }
 					}
                     else {
-                        myAnimator.SetTrigger("dead");
                         Destroy (gameObject);
 					}
                     GetComponent<PolygonCollider2D>().enabled = false;

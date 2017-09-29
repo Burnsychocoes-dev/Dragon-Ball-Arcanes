@@ -202,6 +202,7 @@ public class PlayerScript : MonoBehaviour {
     void OnDestroy()
     {
         // Game Over
+        Debug.Log("Goku est detruit");
         GameObject.Find("Menu_death").GetComponent<Menu_death>().PopDeathMenu();
     }
 }
