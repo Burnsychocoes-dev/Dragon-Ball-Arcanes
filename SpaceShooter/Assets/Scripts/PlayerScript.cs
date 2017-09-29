@@ -122,9 +122,6 @@ public class PlayerScript : MonoBehaviour {
         );
 
         GetComponent<Rigidbody2D>().velocity = movement;
-
-        GetComponent<Animator>().SetFloat("horizontalSpeed", Mathf.Abs(horizontal));
-        GetComponent<Animator>().SetFloat("verticalSpeed", Mathf.Abs(vertical));
     }
 
 
@@ -205,8 +202,6 @@ public class PlayerScript : MonoBehaviour {
     void OnDestroy()
     {
         // Game Over.
-        // Ajouter un nouveau script au parent
-        // Car cet objet va être détruit sous peu
-        transform.parent.gameObject.AddComponent<Menu_death>();
+        GameObject.Find("Menu_death").GetComponent<Menu_death>().PopDeathMenu();
     }
 }

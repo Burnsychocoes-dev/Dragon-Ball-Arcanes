@@ -51,30 +51,31 @@ public class HealthScript : MonoBehaviour {
 
                 if (hp <= 0)
 				{
-                    gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-                    gameObject.GetComponent<MoveScript>().enabled = false;
+                    GetComponent<PolygonCollider2D>().enabled = false;
+                    GetComponent<MoveScript>().enabled = false;
                     if (isEnemy && !isShot)
                     {
                         ScoreScript.score += score_value;
                     }
 
 					if (myAnimator != null) {
-                        myAnimator.SetTrigger ("dead");
                         SoundEffectsHelper.Instance.MakeExplosionSound();
                         if (isEnemy && !isShot)
                         {
-							enemyScript.setDead();
-						}
-						Destroy (gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+                            myAnimator.SetTrigger("dead");
+                            enemyScript.setDead();
+                            Destroy(gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+                        }
 
                         if (isCharacter)
                         {
-                            myAnimator.SetTrigger("dead");
+                            myAnimator.SetBool("dead", true);
                             Destroy(gameObject, 5);
                         }
 					}
                     else {
-						Destroy (gameObject);
+                        myAnimator.SetTrigger("dead");
+                        Destroy (gameObject);
 					}
 				}
 			}
