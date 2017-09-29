@@ -204,9 +204,7 @@ public class PlayerScript : MonoBehaviour {
 
     void OnDestroy()
     {
-        // Game Over.
-        // Ajouter un nouveau script au parent
-        // Car cet objet va être détruit sous peu
-        transform.parent.gameObject.AddComponent<Menu_death>();
+        // Game Over
+        GameObject.Find("Menu_death").GetComponent<Menu_death>().PopDeathMenu();
     }
 }

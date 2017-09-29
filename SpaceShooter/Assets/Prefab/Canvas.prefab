@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222207584641351884}
   - component: {fileID: 114959466436191046}
   m_Layer: 5
-  m_Name: content
+  m_Name: manaContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 222923486654062436}
   - component: {fileID: 114204462058354906}
   m_Layer: 5
-  m_Name: content
+  m_Name: healthContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -16,6 +16,7 @@ public class BarScript : MonoBehaviour {
     public void MoveHealthBar(float percent)
     {
         healthBarContent.fillAmount = percent;
+
     }
 
     public void MoveManaBar(float percent)

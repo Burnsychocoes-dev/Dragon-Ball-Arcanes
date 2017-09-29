@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Menu_death : MonoBehaviour {
 
     // Use this for initialization
-    public static Menu_death Instance;
+    //public static Menu_death Instance;
+    
 
     void Start () {
 		
@@ -18,6 +20,12 @@ public class Menu_death : MonoBehaviour {
 
     public void PopDeathMenu()
     {
+        GameObject.Find("HealthBar").GetComponent<Image>().enabled = false;
+        GameObject.Find("healthContent").GetComponent<Image>().enabled = false;
+        GameObject.Find("ManaBar").GetComponent<Image>().enabled = false;
+        GameObject.Find("manaContent").GetComponent<Image>().enabled = false;
+
+
         SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
         BoxCollider2D[] colliders = GetComponentsInChildren<BoxCollider2D>();
         ChangeSceneOnClickScript[] scripts = GetComponentsInChildren<ChangeSceneOnClickScript>();

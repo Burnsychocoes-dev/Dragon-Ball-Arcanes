@@ -26,9 +26,9 @@ public class HealthScript : MonoBehaviour {
     void Start(){
 		myAnimator = gameObject.GetComponent<Animator> ();
         maxhp = hp;
-		if (isEnemy && !isShot)
+		if (isEnemy && !isShot && GetComponent<EnemyScript>())
         {
-            enemyScript = gameObject.GetComponent<EnemyScript>();
+            enemyScript = GetComponent<EnemyScript>();
         }
 	}
 
@@ -47,12 +47,13 @@ public class HealthScript : MonoBehaviour {
                 if (isCharacter)
                 {
                     myAnimator.SetTrigger("hurt");
+                    
+
                 }
 
                 if (hp <= 0)
 				{
-                    gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-                    gameObject.GetComponent<MoveScript>().enabled = false;
+                    
                     if (isEnemy && !isShot)
                     {
                         ScoreScript.score += score_value;
@@ -61,22 +62,28 @@ public class HealthScript : MonoBehaviour {
 					if (myAnimator != null) {
                         myAnimator.SetTrigger ("dead");
                         SoundEffectsHelper.Instance.MakeExplosionSound();
+                        Debug.Log("Je vais mourir");
+                        Debug.Log(gameObject);
                         if (isEnemy && !isShot)
                         {
 							enemyScript.setDead();
-						}
-						Destroy (gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
-
+                            Destroy(gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+                        }						
+                        
                         if (isCharacter)
                         {
-                            myAnimator.SetTrigger("dead");
-                            Destroy(gameObject, 5);
+                            
+                            Destroy(gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+                            
+
                         }
 					}
                     else {
 						Destroy (gameObject);
 					}
-				}
+                    GetComponent<PolygonCollider2D>().enabled = false;
+                    GetComponent<MoveScript>().enabled = false;
+                }
 			}
 		}
 	}
