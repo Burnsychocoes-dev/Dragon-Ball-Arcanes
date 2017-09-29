@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f4890a453e062194cb8b61f3333ded76
-timeCreated: 1506675569
+guid: da8e94782d1e34a47b06a993b882b690
+timeCreated: 1506678818
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Jayce_base
+    21300000: jayce_default
     21300002: Jayce_preattack1
     21300004: Jayce_preattack2
     21300006: Jayce_attack
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -79,11 +79,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jayce_base
+      name: jayce_default
       rect:
         serializedVersion: 2
-        x: 75
-        y: 431
+        x: 293
+        y: 383
         width: 28
         height: 42
       alignment: 0
@@ -96,7 +96,7 @@ TextureImporter:
       name: Jayce_preattack1
       rect:
         serializedVersion: 2
-        x: 167
+        x: 204
         y: 237
         width: 26
         height: 42
@@ -110,7 +110,7 @@ TextureImporter:
       name: Jayce_preattack2
       rect:
         serializedVersion: 2
-        x: 204
+        x: 153
         y: 126
         width: 40
         height: 35
@@ -124,10 +124,10 @@ TextureImporter:
       name: Jayce_attack
       rect:
         serializedVersion: 2
-        x: 252
+        x: 82
         y: 114
-        width: 62
-        height: 63
+        width: 63
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

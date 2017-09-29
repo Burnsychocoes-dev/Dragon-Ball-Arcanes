@@ -5,31 +5,86 @@ using UnityEngine;
 public class MoveScript : MonoBehaviour {
 
 	private Rigidbody2D rigidbody2D;
-	void Start () {
-		rigidbody2D = GetComponent<Rigidbody2D> ();
+    // 1 - Designer variables
 
-	}
-	
-	// 1 - Designer variables
+    /// <summary>
+    /// Vitesse de déplacement
+    /// </summary>
+    public Vector2 speed = new Vector2(10, 10);
 
-	/// <summary>
-	/// Vitesse de déplacement
-	/// </summary>
-	public Vector2 speed = new Vector2(10, 10);
+    /// <summary>
+    /// Direction
+    /// </summary>
+    public Vector2 direction = new Vector2(-1, 0);
 
-	/// <summary>
-	/// Direction
-	/// </summary>
-	public Vector2 direction = new Vector2(-1, 0);
+    /// <summary>
+    /// permet de limiter le déplacement de l'unité par rapport au haut et au bas de la caméra (utile pour les déplacements de haut en bas, pour qu'il puisse rebondir)
+    /// </summary>
     public double limit_deplacement = 1f; // en %de caméra doit être 1 0.75 0.5 0.25 en raison de problème d'arrondi
-	private Vector2 movement;
+    /// <summary>
+    /// Pour calculer le mouvement
+    /// </summary>
+    private Vector2 movement;
+
+    public bool isShot = false;
+    /// <summary>
+    /// Si le mouvement doit suivre le joueur ou bas (ex tête chercheuse)
+    /// </summary>
+    
+    public bool character_lock = false;
+    /// <summary>
+    /// S'il s'agit d'un missile visé (pas forcemment tête chercheuse, mais on vise le joueur)
+    /// </summary>
+    public bool character_lock_init = false;
+
+
+    void Start () {
+		rigidbody2D = GetComponent<Rigidbody2D> ();
+        //Si on doit viser, on calcule les coordonées et on attend l'animation si on est pas un projectile
+        if (character_lock_init)
+        {
+            CalculDirectionForHeadHunter();
+            StartCoroutine(WaitForInitAnimation());
+
+        }
+	}
+    
 
 	void Update()
 	{
-        
-        
 
-        // 6 - Déplacement limité au cadre de la caméra
+        // Déplacement limité au cadre de la caméra
+        if (!isShot)
+        {
+            LimitationDeplacement();
+        }
+
+        //Si on est une tête chercheuse, on change la direction en fonction du personnage
+        if (character_lock)
+        {
+            CalculDirectionForHeadHunter();
+        }
+        
+        //Calcul du mouvement
+        movement = new Vector2(
+            speed.x * direction.x,
+            speed.y * direction.y);
+    }
+
+    void FixedUpdate()
+	{
+		// Application du mouvement
+		// new pos = position + speed * maxspeed*time deltatime Time.deltaTime si on utilise pas velocity
+		rigidbody2D.velocity = movement;
+	}
+
+    public void setDead()
+    {
+        speed = new Vector2(0, 0);
+    }
+
+    private void LimitationDeplacement()
+    {
         var dist = (transform.position - Camera.main.transform.position).z;
 
         var topBorder = Camera.main.ViewportToWorldPoint(
@@ -42,31 +97,36 @@ public class MoveScript : MonoBehaviour {
 
         transform.position = new Vector3(
             transform.position.x,
-            Mathf.Clamp(transform.position.y, topBorder*(float)limit_deplacement, bottomBorder*(float)limit_deplacement),
+            Mathf.Clamp(transform.position.y, topBorder * (float)limit_deplacement, bottomBorder * (float)limit_deplacement),
             transform.position.z
         );
 
         //Si on est sur un bord -> on change de direction y
-        if(transform.position.y == topBorder*(float)limit_deplacement || transform.position.y == bottomBorder*(float)limit_deplacement)
+        if (transform.position.y == topBorder * (float)limit_deplacement || transform.position.y == bottomBorder * (float)limit_deplacement)
         {
             direction.y = -direction.y;
         }
-
-        // 2 - Calcul du mouvement
-        movement = new Vector2(
-            speed.x * direction.x,
-            speed.y * direction.y);
     }
 
-    void FixedUpdate()
-	{
-		// Application du mouvement
-		//new pos = position + speed * maxspeed*time deltatime Time.deltaTime
-		rigidbody2D.velocity = movement;
-	}
 
-    public void setDead()
+    private void CalculDirectionForHeadHunter()
     {
+        PlayerScript player = GameObject.FindObjectOfType<PlayerScript>();
+        Vector3 position = player.GetComponent<Transform>().position;
+        Debug.Log(position);
+        direction = position - transform.position;
+        Debug.Log(direction);
+    }
+
+    private IEnumerator WaitForInitAnimation()
+    {
+        Vector2 speedSave = speed;
+        Animator animator;
         speed = new Vector2(0, 0);
+        if (animator=GetComponent<Animator>())
+        {
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
+        }
+        speed = speedSave;
     }
 }
