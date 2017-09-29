@@ -201,7 +201,7 @@ public class PlayerScript : MonoBehaviour {
 
     void OnDestroy()
     {
-        // Game Over.
+        // Game Over
         GameObject.Find("Menu_death").GetComponent<Menu_death>().PopDeathMenu();
     }
 }
