@@ -122,9 +122,6 @@ public class PlayerScript : MonoBehaviour {
         );
 
         GetComponent<Rigidbody2D>().velocity = movement;
-
-        GetComponent<Animator>().SetFloat("horizontalSpeed", Mathf.Abs(horizontal));
-        GetComponent<Animator>().SetFloat("verticalSpeed", Mathf.Abs(vertical));
     }
 
 
