@@ -20,7 +20,7 @@ public class MoveScript : MonoBehaviour {
     /// <summary>
     /// permet de limiter le déplacement de l'unité par rapport au haut et au bas de la caméra (utile pour les déplacements de haut en bas, pour qu'il puisse rebondir)
     /// </summary>
-    public double limit_deplacement = 1f; // en %de caméra doit être 1 0.75 0.5 0.25 en raison de problème d'arrondi
+    public double limitDeplacement = 1f; // en %de caméra doit être 1 0.75 0.5 0.25 en raison de problème d'arrondi
     /// <summary>
     /// Pour calculer le mouvement
     /// </summary>
@@ -31,22 +31,17 @@ public class MoveScript : MonoBehaviour {
     /// Si le mouvement doit suivre le joueur ou bas (ex tête chercheuse)
     /// </summary>
     
-    public bool character_lock = false;
+    public bool characterLock = false;
     /// <summary>
     /// S'il s'agit d'un missile visé (pas forcemment tête chercheuse, mais on vise le joueur)
     /// </summary>
-    public bool character_lock_init = false;
+    public bool characterLockInit = false;
 
 
     void Start () {
 		rigidbody2D = GetComponent<Rigidbody2D> ();
         //Si on doit viser, on calcule les coordonées et on attend l'animation si on est pas un projectile
-        if (character_lock_init)
-        {
-            CalculDirectionForHeadHunter();
-            StartCoroutine(WaitForInitAnimation());
-
-        }
+        
 	}
     
 
@@ -60,7 +55,7 @@ public class MoveScript : MonoBehaviour {
         }
 
         //Si on est une tête chercheuse, on change la direction en fonction du personnage
-        if (character_lock)
+        if (characterLock)
         {
             CalculDirectionForHeadHunter();
         }
@@ -97,12 +92,12 @@ public class MoveScript : MonoBehaviour {
 
         transform.position = new Vector3(
             transform.position.x,
-            Mathf.Clamp(transform.position.y, topBorder * (float)limit_deplacement, bottomBorder * (float)limit_deplacement),
+            Mathf.Clamp(transform.position.y, topBorder * (float)limitDeplacement, bottomBorder * (float)limitDeplacement),
             transform.position.z
         );
 
         //Si on est sur un bord -> on change de direction y
-        if (transform.position.y == topBorder * (float)limit_deplacement || transform.position.y == bottomBorder * (float)limit_deplacement)
+        if (transform.position.y == topBorder * (float)limitDeplacement || transform.position.y == bottomBorder * (float)limitDeplacement)
         {
             direction.y = -direction.y;
         }
@@ -128,5 +123,16 @@ public class MoveScript : MonoBehaviour {
             yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
         }
         speed = speedSave;
+        CalculDirectionForHeadHunter();
+    }
+
+    //Pour donner la direction à un headhunter avec son animation
+    public void AnimateHeadHunter()
+    {
+        if (characterLockInit)
+        {
+            StartCoroutine(WaitForInitAnimation());
+
+        }
     }
 }

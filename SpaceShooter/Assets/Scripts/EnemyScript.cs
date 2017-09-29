@@ -43,6 +43,7 @@ public class EnemyScript : MonoBehaviour {
 			if (GetComponent<Renderer>().IsVisibleFrom(Camera.main))
 			{
 				Spawn();
+                
 			}
 		}
 		else
@@ -68,11 +69,21 @@ public class EnemyScript : MonoBehaviour {
 		GetComponent<Collider2D>().enabled = true;
 		// -- Mouvement
 		moveScript.enabled = true;
-		// -- Tir
-		foreach (WeaponScript weapon in weapons)
-		{
-			weapon.enabled = true;
-		}
+        // -- Tir
+        //Si c'est une tête chercheuse, on l'anime, sinon on met les armes en place
+        if (moveScript.characterLockInit)
+        {
+            GetComponent<Animator>().SetTrigger("attack");
+            moveScript.AnimateHeadHunter();
+
+        }
+        else
+        {
+            foreach (WeaponScript weapon in weapons)
+            {
+                weapon.enabled = true;
+            }
+        }
 	}
 
 	public void setDead(){
@@ -93,4 +104,6 @@ public class EnemyScript : MonoBehaviour {
             }
         }
     }
+
+    
 }

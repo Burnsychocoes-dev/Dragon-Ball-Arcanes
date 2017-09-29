@@ -157,10 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  score_value: 1
+  score_value: 0
   isEnemy: 1
-  isBorder: 0
-  isFire: 1
+  isShot: 0
   isCharacter: 0
 --- !u!212 &212218786240525528
 SpriteRenderer:

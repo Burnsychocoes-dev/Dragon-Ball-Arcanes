@@ -240,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   isEnemyShot: 1
-  isNotShot: 0
+  isNotShot: 1
 --- !u!114 &114193790291977856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,11 +252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ddfa5692567b054fa15ee587bd8ef8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  score_value: 1
+  hp: 5
+  score_value: 10
   isEnemy: 1
-  isBorder: 0
-  isFire: 0
+  isShot: 0
   isCharacter: 0
 --- !u!114 &114430709963225238
 MonoBehaviour:
@@ -271,10 +270,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 1, y: 1}
   direction: {x: -1, y: 0}
-  limit_deplacement: 1
+  limitDeplacement: 1
   isShot: 0
-  character_lock: 0
-  character_lock_init: 1
+  characterLock: 0
+  characterLockInit: 1
 --- !u!114 &114465848863952870
 MonoBehaviour:
   m_ObjectHideFlags: 1

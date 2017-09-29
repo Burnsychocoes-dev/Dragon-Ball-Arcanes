@@ -168,9 +168,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73be75df41a9aec48a31fcd561e1831b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 1, y: 4}
+  speed: {x: 3, y: 4}
   direction: {x: -1, y: 1}
-  limit_deplacement: 0.75
+  limitDeplacement: 1
+  isShot: 0
+  characterLock: 0
+  characterLockInit: 0
 --- !u!114 &114782677984548092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,11 +200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ddfa5692567b054fa15ee587bd8ef8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  score_value: 1
+  hp: 2
+  score_value: 3
   isEnemy: 1
-  isBorder: 0
-  isFire: 0
+  isShot: 0
   isCharacter: 0
 --- !u!114 &114906911697690400
 MonoBehaviour:
@@ -216,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   isEnemyShot: 1
-  isnotShot: 0
+  isNotShot: 1
 --- !u!212 &212749011728514288
 SpriteRenderer:
   m_ObjectHideFlags: 1
