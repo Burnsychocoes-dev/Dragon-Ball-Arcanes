@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Add by Steve
 public class BarScript : MonoBehaviour {
 
     // negatif = on vire de la barre, positif = on ajoute
