@@ -47,17 +47,10 @@ public class EnemyScript : MonoBehaviour {
 		}
 		else
 		{
-			// On fait tirer toutes les armes automatiquement
-			if (alive) {
-				foreach (WeaponScript weapon in weapons) {
-					if (weapon != null && weapon.enabled && weapon.CanAttack) {
-						weapon.Attack (true);
-                        SoundEffectsHelper.Instance.MakeEnemyShotSound();
-                    }
-				}
-			}
+            // On fait tirer toutes les armes automatiquement si il est vivant
+            HandleShootWithWeapons();
 
-			// 4 - L'ennemi n'a pas été détruit, il faut faire le ménage
+			// Si L'ennemi n'a pas été détruit, il faut faire le ménage
 			if (GetComponent<Renderer>().IsVisibleFrom(Camera.main) == false)
 			{
 				Destroy(gameObject);
@@ -85,4 +78,19 @@ public class EnemyScript : MonoBehaviour {
 	public void setDead(){
 		alive = false;
 	}
+
+    private void HandleShootWithWeapons()
+    {
+        if (alive)
+        {
+            foreach (WeaponScript weapon in weapons)
+            {
+                if (weapon != null && weapon.enabled && weapon.CanAttack)
+                {
+                    weapon.Attack(true);
+                    SoundEffectsHelper.Instance.MakeEnemyShotSound();
+                }
+            }
+        }
+    }
 }

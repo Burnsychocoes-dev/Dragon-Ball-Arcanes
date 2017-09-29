@@ -10,7 +10,7 @@ public class BarScript : MonoBehaviour {
     {
         GameObject hpmask = GameObject.Find("hpmask");
         float barsize = hpmask.GetComponent<BoxCollider2D>().size.x;
-        Vector3 bar_move = new Vector3(barsize * percent, 0, 0);
+        Vector3 bar_move = new Vector3(barsize * percent*0.5f, 0, 0);
         hpmask.transform.Translate(bar_move);
     }
 
@@ -18,7 +18,7 @@ public class BarScript : MonoBehaviour {
     {
         GameObject manamask = GameObject.Find("manamask");
         float barsize = manamask.GetComponent<BoxCollider2D>().size.x;
-        Vector3 bar_move = new Vector3(barsize * percent, 0, 0);
+        Vector3 bar_move = new Vector3(barsize * percent*0.5f, 0, 0);
         manamask.transform.Translate(bar_move);
     }
 }

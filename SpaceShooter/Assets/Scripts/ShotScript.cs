@@ -15,12 +15,12 @@ public class ShotScript : MonoBehaviour {
 	/// Projectile ami ou ennemi ?
 	/// </summary>
 	public bool isEnemyShot = false;
-	public bool isnotShot = false;
+	public bool isNotShot = false;
 
 	void Start()
 	{
 		// 2 - Destruction programmée
-		if(!isnotShot){
+		if(!isNotShot){
 			Destroy(gameObject, 20); // 20sec
 		}
 	}

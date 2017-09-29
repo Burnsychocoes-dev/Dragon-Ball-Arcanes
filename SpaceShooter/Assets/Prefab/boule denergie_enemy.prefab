@@ -127,6 +127,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 10, y: 10}
   direction: {x: -1, y: 0}
+  limit_deplacement: 1
+  isShot: 1
+  character_lock: 0
+  character_lock_init: 0
 --- !u!114 &114377958631038080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   isEnemyShot: 1
-  isnotShot: 0
+  isNotShot: 0
 --- !u!114 &114880037549853768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,10 +157,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
+  score_value: 1
   isEnemy: 1
   isBorder: 0
   isFire: 1
-  Death_animator: {fileID: 95529008001611610}
+  isCharacter: 0
 --- !u!212 &212218786240525528
 SpriteRenderer:
   m_ObjectHideFlags: 1
