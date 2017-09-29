@@ -16,14 +16,16 @@ public class PlayerScript : MonoBehaviour {
     public Vector2 speed = new Vector2(50, 50);
     public float mana = 100;
     private float mana_max;
-    public float mana_regen = 10f;
-    private int mana_regen_correction = 2; // multiplicateur de regen (pour le super sayan)
+    public float mana_regen = 1f;
+    private int mana_regen_multiplicateur = 1; // multiplicateur de regen (pour le super sayan)
     private float tp_correction = 1.5f;
-    public float tp_cd = 0; //cooldown de la teleportation
+    public float tp_cd = 1f; //cooldown de la teleportation
     private float tp_cd_count; // compteur du cooldown de la tp
     public float tp_mana_cost = 10;
     // 2 - Stockage du mouvement
     private Vector2 movement;
+
+
 
 
     void Start () {
@@ -46,121 +48,16 @@ public class PlayerScript : MonoBehaviour {
         // 3 - Récupérer les informations du clavier/manette
         float inputX = Input.GetAxis("Horizontal");
 		float inputY = Input.GetAxis("Vertical");
-
-		// 4 - Calcul du mouvement
-		movement = new Vector2(
-			speed.x * inputX,
-			speed.y * inputY);
+        HandleMovement(inputX, inputY);
 
         // 5 - Tir && Teleportations
         bool shoot = Input.GetButton("Fire1");
-        //shoot |= Input.GetButton("Fire2");
-        // Astuce pour ceux sous Mac car Ctrl + flèches est utilisé par le système
-        WeaponScript weapon = GetComponentInChildren<WeaponScript>();
-        //GameObject manamask = GameObject.Find("manamask");
-        if (shoot)
-        {
-            if (weapon != null)
-            {
-                // false : le joueur n'est pas un ennemi
-                
-                int mana_cost = weapon.mana_cost;
-                if (mana - mana_cost > 0 && weapon.CanAttack)
-                {
-                    mana -= mana_cost;
-                    float percent = mana_cost / mana_max;
-                    /*float barsize = manamask.GetComponent<BoxCollider2D>().size.x;                    
-                    Vector3 bar_move = new Vector3(-barsize * percent, 0, 0);
-                    manamask.transform.Translate(bar_move);*/
-                    BarScript.MoveManaBar(-percent); // appel au script pour animer la mana
-                    weapon.Attack(false);
-                }
-                
-
-            }
-        }
-        else
-        {
-            float add_mana = mana_regen * Time.deltaTime * mana_regen_correction;
-            mana += add_mana;
-            float residu = 0;
-            float percent = 0;
-            ///float barsize = manamask.GetComponent<BoxCollider2D>().size.x;
-            
-            if (mana > mana_max)
-            {
-                residu = mana - mana_max;
-                mana = mana_max;
-                percent = (add_mana - residu) / mana_max;
-            }
-            else
-            {
-                percent = add_mana / mana_max;                
-            }
-            /*Vector3 bar_move = new Vector3(barsize * percent, 0, 0);
-            manamask.transform.Translate(bar_move);*/
-            BarScript.MoveManaBar(percent);
+        HandleShoot(shoot);
 
 
-
-        }
-
-        bool teleportup = Input.GetButtonDown("Teleportationup");
-        bool teleportdown = Input.GetButtonDown("Teleportationdown");
-        
-        if (CanTp && (teleportup || teleportdown))
-        {
-            Debug.Log("salut");
-            tp_cd_count = tp_cd;
-            float height = GetComponent<Renderer>().bounds.size.y;
-            mana -= tp_mana_cost;
-            float percent = tp_mana_cost / mana_max;
-            BarScript.MoveManaBar(-percent);
-
-            //Teleportation up
-            if (teleportup) { 
-                
-                float inputYblock = 1;
-                
-                transform.position = new Vector3(transform.position.x, transform.position.y + height * inputYblock * tp_correction);
-                SoundEffectsHelper.Instance.MakeTeleportationSound();
-            }
-            else if (teleportdown) // teleportation down
-            {
-                
-                float inputYblock = -1;                
-                transform.position = new Vector3(transform.position.x, transform.position.y + height * inputYblock * tp_correction);
-                SoundEffectsHelper.Instance.MakeTeleportationSound();
-            }
-        }
-
-
-        // 6 - Déplacement limité au cadre de la caméra
-        var dist = (transform.position - Camera.main.transform.position).z;
-
-		var leftBorder = Camera.main.ViewportToWorldPoint(
-			new Vector3(0, 0, dist)
-		).x;
-
-		var rightBorder = Camera.main.ViewportToWorldPoint(
-			new Vector3(1, 0, dist)
-		).x;
-
-		var topBorder = Camera.main.ViewportToWorldPoint(
-			new Vector3(0, 0, dist)
-		).y;
-
-		var bottomBorder = Camera.main.ViewportToWorldPoint(
-			new Vector3(0, 1, dist)
-		).y;
-
-		transform.position = new Vector3(
-			Mathf.Clamp(transform.position.x, leftBorder, rightBorder),
-			Mathf.Clamp(transform.position.y, topBorder, bottomBorder),
-			transform.position.z
-		);
-
-		// Fin d'Update
+        bool teleportup = Input.GetButtonDown("TeleportationUp");
+        bool teleportdown = Input.GetButtonDown("TeleportationDown");
+        HandleTeleportation(teleportdown, teleportup);
 
 	}
 
@@ -178,20 +75,138 @@ public class PlayerScript : MonoBehaviour {
 		} else {
 			animator.SetBool ("attack", false);
 		}
-        if (Input.GetButtonDown("Teleportationup") || Input.GetButtonDown("Teleportationdown")){
+        if (Input.GetButtonDown("TeleportationUp") || Input.GetButtonDown("TeleportationDown")){
             animator.SetTrigger("teleport");
         }
+
 		// 5 - Déplacement
 		rigidbody.velocity = movement;
-	}
+
+        // Update mana bar
+        UpdateBar();
+
+    }
+
+
+    public void HandleMovement(float horizontal, float vertical)
+    {
+        // 4 - Calcul du mouvement
+        movement = new Vector2(
+          speed.x * horizontal,
+          speed.y * vertical);
+
+
+        // 6 - Déplacement limité au cadre de la caméra
+        var dist = (transform.position - Camera.main.transform.position).z;
+
+        var leftBorder = Camera.main.ViewportToWorldPoint(
+          new Vector3(0, 0, dist)
+        ).x;
+
+        var rightBorder = Camera.main.ViewportToWorldPoint(
+          new Vector3(1, 0, dist)
+        ).x;
+
+        var topBorder = Camera.main.ViewportToWorldPoint(
+          new Vector3(0, 0, dist)
+        ).y;
+
+        var bottomBorder = Camera.main.ViewportToWorldPoint(
+          new Vector3(0, 1, dist)
+        ).y;
+
+        transform.position = new Vector3(
+          Mathf.Clamp(transform.position.x, leftBorder, rightBorder),
+          Mathf.Clamp(transform.position.y, topBorder, bottomBorder),
+          transform.position.z
+        );
+
+        GetComponent<Rigidbody2D>().velocity = movement;
+
+        GetComponent<Animator>().SetFloat("horizontalSpeed", Mathf.Abs(horizontal));
+        GetComponent<Animator>().SetFloat("verticalSpeed", Mathf.Abs(vertical));
+    }
+
+
+    public void HandleShoot(bool shoot)
+    {
+        WeaponScript weapon = GetComponentInChildren<WeaponScript>();
+        //GameObject manamask = GameObject.Find("manamask");
+        if (shoot)
+        {
+            if (weapon != null)
+            {
+                // false : le joueur n'est pas un ennemi
+                int mana_cost = weapon.mana_cost;
+                if ((mana - mana_cost > 0) && weapon.CanAttack)
+                {
+                    mana -= mana_cost;
+                    weapon.Attack(false);
+                }
+            }
+        }
+        else
+        {
+            float add_mana = mana_regen * Time.deltaTime * mana_regen_multiplicateur;
+            mana += add_mana;
+            if (mana > mana_max)
+            {
+                mana = mana_max;
+            }
+        }
+    }
+
+
+    public void HandleTeleportation(bool tpDown, bool tpUp)
+    {
+        if (CanTp && (tpDown || tpUp))
+        {    
+            tp_cd_count = tp_cd;
+            float height = GetComponent<Renderer>().bounds.size.y;
+            mana -= tp_mana_cost;
+            float percent = tp_mana_cost / mana_max;
+            GetComponent<BarScript>().MoveManaBar(percent);
+
+            //Teleportation up
+            if (tpUp)
+            {
+                float inputYblock = 1;
+
+                transform.position = new Vector3(transform.position.x, transform.position.y + height * inputYblock * tp_correction);
+                SoundEffectsHelper.Instance.MakeTeleportationSound();
+            }
+            // teleportation down
+            else if (tpDown)
+            {
+                float inputYblock = -1;
+                transform.position = new Vector3(transform.position.x, transform.position.y + height * inputYblock * tp_correction);
+                SoundEffectsHelper.Instance.MakeTeleportationSound();
+            }
+        }
+    }
+
+    public void UpdateBar()
+    {
+        float manaPercent = (float)mana / mana_max;
+        float hpPercent = (float)GetComponent<HealthScript>().hp / GetComponent<HealthScript>().GetMaxHp();
+        GetComponent<BarScript>().MoveManaBar(manaPercent);
+        GetComponent<BarScript>().MoveHealthBar(hpPercent);
+    }
+
 
     public bool CanTp
     {
         get
         {
-            return ((tp_cd_count <= 0f) && mana>=tp_mana_cost);
+            return ((tp_cd_count <= 0f) && mana >= tp_mana_cost);
         }
     }
 
-
+    void OnDestroy()
+    {
+        // Game Over.
+        // Ajouter un nouveau script au parent
+        // Car cet objet va être détruit sous peu
+        transform.parent.gameObject.AddComponent<Menu_death>();
+    }
 }

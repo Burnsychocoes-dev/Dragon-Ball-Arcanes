@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 212826613193713204}
   - component: {fileID: 60498140419238658}
   - component: {fileID: 50828389053681594}
+  - component: {fileID: 114952747005329376}
   - component: {fileID: 114357398706630790}
   - component: {fileID: 95000857151131714}
   - component: {fileID: 114097491850627740}
@@ -163,8 +164,7 @@ MonoBehaviour:
   hp: 100
   score_value: 1
   isEnemy: 0
-  isBorder: 0
-  isFire: 0
+  isShot: 0
   isCharacter: 1
 --- !u!114 &114357398706630790
 MonoBehaviour:
@@ -178,10 +178,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 25, y: 25}
-  mana: 100
-  mana_regen: 25
+  mana: 1000
+  mana_regen: 10
   tp_cd: 0.25
-  tp_mana_cost: 10
+  tp_mana_cost: 50
 --- !u!114 &114638173803329254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,7 +196,7 @@ MonoBehaviour:
   shotPrefab: {fileID: 4053488503514916, guid: 10035003eb8d505428ae685712e84f25, type: 2}
   shootingRate: 0.35
   isEnemy: 0
-  mana_cost: 1
+  mana_cost: 10
 --- !u!114 &114828669628724288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,6 +226,19 @@ MonoBehaviour:
   damage: 10
   isEnemyShot: 0
   isnotShot: 1
+--- !u!114 &114952747005329376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729523143674214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d143e28780cd7d34ba34ebb99bae83ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manaBarContent: {fileID: 0}
+  healthBarContent: {fileID: 0}
 --- !u!212 &212826613193713204
 SpriteRenderer:
   m_ObjectHideFlags: 1
