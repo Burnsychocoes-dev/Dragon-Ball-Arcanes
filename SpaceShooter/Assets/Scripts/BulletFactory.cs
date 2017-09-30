@@ -7,18 +7,34 @@ public class BulletFactory : MonoBehaviour {
     //public static BulletFactory Instance;
     public Transform playerBulletPrefab;
     public Transform burterBulletPrefab;
+    public Transform friezaDefaultBulletPrefab;
+    public Transform friezaMegaBulletPrefab;
+    public Transform friezaUltiBulletPrefab;
+    public Transform friezaRayonBulletPrefab;
     
     private Transform[] playerBulletPool;
     private Transform[] burterBulletPool;
+    private Transform[] friezaDefaultBulletPool;
+    private Transform[] friezaMegaBulletPool;
+    private Transform[] friezaUltiBulletPool;
+    private Transform[] friezaRayonBulletPool;
 
-    public int playerBulletPoolLength = 150;
-    public int burterBulletPoolLength = 150;
+    public int playerBulletPoolLength = 50;
+    public int burterBulletPoolLength = 50;
+    public int friezaDefaultBulletPoolLength = 0; //10
+    public int friezaMegaBulletPoolLength = 0;  //3
+    public int friezaUltiBulletPoolLength = 0; //1
+    public int friezaRayonBulletPoolLength = 0; //50 ?
 
     public enum BulletType
     {
         NONE,
         PLAYERBULLET,
-        BURTERBULLET
+        BURTERBULLET,
+        FRIEZADEFAULTBULLET,
+        FRIEZAMEGABULLET,
+        FRIEZAULTIBULLET,
+        FRIEZARAYONBULLET
     }
     
 	// Use this for initialization
@@ -27,15 +43,18 @@ public class BulletFactory : MonoBehaviour {
         //initialisation de la pool
         playerBulletPool = new Transform[playerBulletPoolLength];
         burterBulletPool = new Transform[burterBulletPoolLength];
+        friezaDefaultBulletPool = new Transform[friezaDefaultBulletPoolLength];
+        friezaMegaBulletPool = new Transform[friezaMegaBulletPoolLength];
+        friezaUltiBulletPool = new Transform[friezaUltiBulletPoolLength];
+        friezaRayonBulletPool = new Transform[friezaRayonBulletPoolLength];
 
-        for(int i=0; i<playerBulletPoolLength; i++)
-        {
-            playerBulletPool[i] = SpawnBullet(BulletType.PLAYERBULLET);
-        }
-        for(int i=0; i < burterBulletPoolLength; i++)
-        {
-            burterBulletPool[i] = SpawnBullet(BulletType.BURTERBULLET);
-        }
+        initBulletList(playerBulletPool, playerBulletPoolLength, BulletType.PLAYERBULLET);
+        initBulletList(burterBulletPool, burterBulletPoolLength, BulletType.BURTERBULLET);
+        initBulletList(friezaDefaultBulletPool, friezaDefaultBulletPoolLength, BulletType.FRIEZADEFAULTBULLET);
+        initBulletList(friezaMegaBulletPool, friezaMegaBulletPoolLength, BulletType.FRIEZAMEGABULLET);
+        initBulletList(friezaUltiBulletPool, friezaUltiBulletPoolLength, BulletType.FRIEZAULTIBULLET);
+        initBulletList(friezaRayonBulletPool, friezaRayonBulletPoolLength, BulletType.FRIEZARAYONBULLET);
+        
 
 	}
 	
@@ -44,6 +63,15 @@ public class BulletFactory : MonoBehaviour {
 		
 	}
 
+    private void initBulletList(Transform[] pool, int poolLength, BulletType bulletType)
+    {
+        for(int i=0; i < poolLength; i++)
+        {
+            pool[i] = SpawnBullet(bulletType);
+        }
+    }
+
+    //spawn un bullet dans la pool
     public Transform SpawnBullet(BulletType bulletType)
     {
         Transform bullet = null;
@@ -54,6 +82,18 @@ public class BulletFactory : MonoBehaviour {
                 break;
             case BulletType.BURTERBULLET:
                 bullet = Instantiate(burterBulletPrefab) as Transform;
+                break;
+            case BulletType.FRIEZADEFAULTBULLET:
+                bullet = Instantiate(friezaDefaultBulletPrefab) as Transform;
+                break;
+            case BulletType.FRIEZAMEGABULLET:
+                bullet = Instantiate(friezaMegaBulletPrefab) as Transform;
+                break;
+            case BulletType.FRIEZAULTIBULLET:
+                bullet = Instantiate(friezaUltiBulletPrefab) as Transform;
+                break;
+            case BulletType.FRIEZARAYONBULLET:
+                bullet = Instantiate(friezaRayonBulletPrefab) as Transform;
                 break;
                 
         }
@@ -67,6 +107,7 @@ public class BulletFactory : MonoBehaviour {
         return bullet;
     } 
 
+    //permet d'obtenir un bullet de la pool
     public Transform GetBullet(BulletType bulletType)
     {
         Transform bullet = null;
@@ -74,24 +115,32 @@ public class BulletFactory : MonoBehaviour {
         {
             case BulletType.PLAYERBULLET:
                 bullet = GetABulletFromAPool(playerBulletPool, playerBulletPoolLength);
-                if (bullet == null)
-                {
-                    bullet = SpawnBullet(bulletType);
-                }
-
                 break;
 
             case BulletType.BURTERBULLET:
                 bullet = GetABulletFromAPool(burterBulletPool, burterBulletPoolLength);
-                if (bullet == null)
-                {
-                    bullet = SpawnBullet(bulletType);
-                }
                 break;
+            case BulletType.FRIEZADEFAULTBULLET:
+                bullet = GetABulletFromAPool(friezaDefaultBulletPool, friezaDefaultBulletPoolLength);
+                break;
+            case BulletType.FRIEZAMEGABULLET:
+                bullet = GetABulletFromAPool(friezaMegaBulletPool, friezaMegaBulletPoolLength);
+                break;
+            case BulletType.FRIEZAULTIBULLET:
+                bullet = GetABulletFromAPool(friezaUltiBulletPool, friezaUltiBulletPoolLength);
+                break;
+            case BulletType.FRIEZARAYONBULLET:
+                bullet = GetABulletFromAPool(friezaRayonBulletPool, friezaRayonBulletPoolLength);
+                break;
+        }
+        if (bullet == null)
+        {
+            bullet = SpawnBullet(bulletType);
         }
         return bullet;
     }
 
+    //permet de rendre un bullet dans la pool
     public void GiveBackBullet(BulletType bulletType, Transform bullet)
     {
         bullet.position = new Vector3(-100, -100, -10);
@@ -111,11 +160,23 @@ public class BulletFactory : MonoBehaviour {
             case BulletType.BURTERBULLET:
                 PutBulletBackInAPool(bullet, burterBulletPool, burterBulletPoolLength);
                 break;
-
+            case BulletType.FRIEZADEFAULTBULLET:
+                PutBulletBackInAPool(bullet, friezaDefaultBulletPool, friezaDefaultBulletPoolLength);
+                break;
+            case BulletType.FRIEZAMEGABULLET:
+                PutBulletBackInAPool(bullet, friezaMegaBulletPool, friezaMegaBulletPoolLength);
+                break;
+            case BulletType.FRIEZAULTIBULLET:
+                PutBulletBackInAPool(bullet, friezaUltiBulletPool, friezaUltiBulletPoolLength);
+                break;
+            case BulletType.FRIEZARAYONBULLET:
+                PutBulletBackInAPool(bullet, friezaRayonBulletPool, friezaRayonBulletPoolLength);
+                break;
         }
 
     }
 
+    //sort un bullet d'une pool
     private Transform GetABulletFromAPool(Transform[] bulletPool, int poolLength)
     {
         Transform bullet = null;
@@ -130,6 +191,8 @@ public class BulletFactory : MonoBehaviour {
         }
         return bullet;
     }
+
+    //met un bullet dans une pool
     private void PutBulletBackInAPool(Transform bullet, Transform[] bulletPool, int poolLength )
     {
         for(int i=0; i < poolLength; i++)

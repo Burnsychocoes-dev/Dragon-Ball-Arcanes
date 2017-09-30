@@ -11,9 +11,9 @@ public class WeaponScript : MonoBehaviour {
 	/// <summary>
 	/// Prefab du projectile
 	/// </summary>
-	public Transform shotPrefab;    
+	//public Transform shotPrefab;    
     [SerializeField]
-    private BulletFactory.BulletType bulletType;
+    protected BulletFactory.BulletType bulletType;
 
 	/// <summary>
 	/// Temps de rechargement entre deux tirs
@@ -24,7 +24,7 @@ public class WeaponScript : MonoBehaviour {
 	// 2 - Rechargement
 	//--------------------------------
 
-	private float shootCooldown;
+	protected float shootCooldown;
 	public bool isEnemy = true;
     public int mana_cost = 0;
 
@@ -59,20 +59,10 @@ public class WeaponScript : MonoBehaviour {
             //var shotTransform = Instantiate(shotPrefab) as Transform;
 
             //nouvelle version
-            Transform shotTransform = GameObject.Find("Scripts").GetComponent<BulletFactory>().GetBullet(bulletType);
-            Debug.Log("bullet poped");
+            Transform shotTransform = popBullet(bulletType);
+            //Debug.Log("bullet poped");
             
-			// Position
-			shotTransform.position = transform.position;
-            Debug.Log(shotTransform.position);
-			shotTransform.rotation = transform.rotation;
-            //components du shot
-            shotTransform.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
-            shotTransform.gameObject.GetComponent<Renderer>().enabled = true;            
-            shotTransform.gameObject.GetComponent<MoveScript>().enabled = true;
-            shotTransform.gameObject.GetComponent<ShotScript>().enabled = true;
-            shotTransform.gameObject.GetComponent<HealthScript>().enabled = true;
-            shotTransform.gameObject.GetComponent<Animator>().SetBool("pool", false);
+			
 
             // Propriétés du script
             ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
@@ -105,6 +95,25 @@ public class WeaponScript : MonoBehaviour {
 			return shootCooldown <= 0f;
 		}
 	}
+
+    protected Transform popBullet(BulletFactory.BulletType bulletType)
+    {
+        Transform shotTransform=null;
+        shotTransform = GameObject.Find("Scripts").GetComponent<BulletFactory>().GetBullet(bulletType);
+        // Position
+        shotTransform.position = transform.position;
+        Debug.Log(shotTransform.position);
+        shotTransform.rotation = transform.rotation;
+        //components du shot
+        shotTransform.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+        shotTransform.gameObject.GetComponent<Renderer>().enabled = true;
+        shotTransform.gameObject.GetComponent<MoveScript>().enabled = true;
+        shotTransform.gameObject.GetComponent<ShotScript>().enabled = true;
+        shotTransform.gameObject.GetComponent<HealthScript>().enabled = true;
+        shotTransform.gameObject.GetComponent<Animator>().SetBool("pool", false);
+
+        return shotTransform;
+    }
 
     
 }
