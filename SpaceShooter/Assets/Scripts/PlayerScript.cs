@@ -91,15 +91,15 @@ public class PlayerScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        ItemScript item = collider.gameObject.GetComponent<ItemScript>();
+        Item item = collider.gameObject.GetComponent<Item>();
         if (item != null)
         { 
             switch (item.GetItemName())
             {
-                case ItemScript.ItemName.senzu:
+                case Item.ItemName.senzu:
                     health.hp = health.GetMaxHp();
                     break;
-                case ItemScript.ItemName.capsuleEnergy:
+                case Item.ItemName.capsuleEnergy:
                     mana = mana_max;
                     break;
             }

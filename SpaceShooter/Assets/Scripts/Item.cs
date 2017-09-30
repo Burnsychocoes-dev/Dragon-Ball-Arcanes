@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemScript : MonoBehaviour {
 
-    public enum ItemName {
+
+public class Item : MonoBehaviour {
+
+    public enum ItemName
+    {
         senzu,
         boule1Etoile,
         boule2Etoile,
@@ -18,7 +21,6 @@ public class ItemScript : MonoBehaviour {
 
     [SerializeField]
     private ItemName itemName;
-
 
     public ItemName GetItemName()
     {
