@@ -27,8 +27,10 @@ public class WeaponScript : MonoBehaviour {
 	protected float shootCooldown;
 	public bool isEnemy = true;
     public int mana_cost = 0;
+    public string animatorParameter = ""; //animation à faire
+    public AudioClip soundToPlay = null; //son à faire
 
-	void Start()
+    void Start()
 	{
 		shootCooldown = 0f;
 	}

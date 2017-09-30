@@ -74,7 +74,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1510474770441240
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,8 +341,14 @@ MonoBehaviour:
   shootingRate: 0.5
   isEnemy: 1
   mana_cost: 0
-  shootDelay: 3
+  firstWeapon: 1
   shootDuration: 2
+  next:
+  - {fileID: 1257965534213824}
+  - {fileID: 1106909230192814}
+  - {fileID: 1347999129911848}
+  animatorParameter: attack_default
+  soundToPlay: {fileID: 0}
 --- !u!114 &114208275319037824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,11 +376,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 4
-  shootingRate: 5
+  shootingRate: 1
   isEnemy: 1
   mana_cost: 0
-  shootDelay: 10
+  firstWeapon: 0
   shootDuration: 2
+  next: []
+  animatorParameter: 
+  soundToPlay: {fileID: 0}
 --- !u!114 &114516106814435846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -390,8 +399,11 @@ MonoBehaviour:
   shootingRate: 0.25
   isEnemy: 1
   mana_cost: 0
-  shootDelay: 0
+  firstWeapon: 0
   shootDuration: 0
+  next: []
+  animatorParameter: 
+  soundToPlay: {fileID: 0}
 --- !u!114 &114742323758378586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -404,11 +416,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 4
-  shootingRate: 5
+  shootingRate: 1
   isEnemy: 1
   mana_cost: 0
-  shootDelay: 10
+  firstWeapon: 0
   shootDuration: 2
+  next: []
+  animatorParameter: attack_ball
+  soundToPlay: {fileID: 0}
 --- !u!114 &114773320147212974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,11 +436,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 5
-  shootingRate: 11
+  shootingRate: 1
   isEnemy: 1
   mana_cost: 0
-  shootDelay: 20
+  firstWeapon: 0
   shootDuration: 1
+  next:
+  - {fileID: 1603009666785948}
+  animatorParameter: attack_ulti
+  soundToPlay: {fileID: 0}
 --- !u!114 &114785577760586730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -454,11 +473,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 4
-  shootingRate: 5
+  shootingRate: 1
   isEnemy: 1
   mana_cost: 0
-  shootDelay: 10
+  firstWeapon: 0
   shootDuration: 2
+  next:
+  - {fileID: 1510474770441240}
+  animatorParameter: 
+  soundToPlay: {fileID: 0}
 --- !u!114 &114847890238466888
 MonoBehaviour:
   m_ObjectHideFlags: 1
