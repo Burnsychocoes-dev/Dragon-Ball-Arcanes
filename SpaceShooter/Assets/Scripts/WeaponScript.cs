@@ -66,11 +66,13 @@ public class WeaponScript : MonoBehaviour {
 			shotTransform.position = transform.position;
             Debug.Log(shotTransform.position);
 			shotTransform.rotation = transform.rotation;
+            //components du shot
             shotTransform.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
             shotTransform.gameObject.GetComponent<Renderer>().enabled = true;            
             shotTransform.gameObject.GetComponent<MoveScript>().enabled = true;
             shotTransform.gameObject.GetComponent<ShotScript>().enabled = true;
             shotTransform.gameObject.GetComponent<HealthScript>().enabled = true;
+            shotTransform.gameObject.GetComponent<Animator>().SetBool("pool", false);
 
             // Propriétés du script
             ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();

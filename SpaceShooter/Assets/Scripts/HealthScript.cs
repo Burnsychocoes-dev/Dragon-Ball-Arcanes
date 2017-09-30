@@ -75,6 +75,7 @@ public class HealthScript : MonoBehaviour {
                         if (isShot)
                         {
                             //renvoyer le shot dans la pool;
+                            
                             StartCoroutine(GiveBulletBackAfterT(myAnimator.GetCurrentAnimatorClipInfo(0).Length, GetComponent<Transform>()));
                             
                         }
@@ -99,6 +100,7 @@ public class HealthScript : MonoBehaviour {
 
     private IEnumerator GiveBulletBackAfterT(float t, Transform bullet)
     {
+        bullet.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         yield return new WaitForSecondsRealtime(t);
         GameObject.Find("Scripts").GetComponent<BulletFactory>().GiveBackBullet(bullet.GetComponent<ShotScript>().getBulletType(), bullet);
     }

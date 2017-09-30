@@ -99,5 +99,5 @@ MonoBehaviour:
     type: 2}
   burterBulletPrefab: {fileID: 4360211968516162, guid: 9ecd3019498feca44b20e90a7be55c00,
     type: 2}
-  playerBulletPoolLength: 150
-  burterBulletPoolLength: 150
+  playerBulletPoolLength: 30
+  burterBulletPoolLength: 50

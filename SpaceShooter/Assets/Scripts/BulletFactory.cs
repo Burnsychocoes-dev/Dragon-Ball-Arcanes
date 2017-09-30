@@ -102,7 +102,7 @@ public class BulletFactory : MonoBehaviour {
         bullet.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0,0,0);
         HealthScript hpScript = bullet.gameObject.GetComponent<HealthScript>();
         hpScript.hp = hpScript.GetMaxHp();
-        bullet.gameObject.GetComponent<Animator>().SetTrigger("pool");
+        bullet.gameObject.GetComponent<Animator>().SetBool("pool",true);
         switch (bulletType)
         {
             case BulletType.PLAYERBULLET:
