@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73be75df41a9aec48a31fcd561e1831b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 1, y: 1}
+  speed: {x: 5, y: 5}
   direction: {x: -1, y: 0}
   limitDeplacement: 1
   isShot: 0
@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e4709f994ad944c829476dcc4b6374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
 --- !u!212 &212554416142667650
 SpriteRenderer:
   m_ObjectHideFlags: 1

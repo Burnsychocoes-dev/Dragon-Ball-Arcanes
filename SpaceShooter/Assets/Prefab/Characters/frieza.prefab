@@ -190,7 +190,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1855904565731614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.39, y: -0.18, z: 0}
+  m_LocalPosition: {x: 10.747745, y: 0.25089025, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 4031057301668928}
@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e4709f994ad944c829476dcc4b6374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 1
 --- !u!114 &114041479801778210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -319,11 +320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73be75df41a9aec48a31fcd561e1831b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 1, y: 0}
+  speed: {x: 0, y: 1}
   direction: {x: -1, y: 0}
   limitDeplacement: 1
   isShot: 0
-  characterLock: 0
+  characterLock: 1
   characterLockInit: 0
 --- !u!114 &114130226683632368
 MonoBehaviour:
@@ -337,9 +338,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 3
-  shootingRate: 0.25
+  shootingRate: 0.5
   isEnemy: 1
   mana_cost: 0
+  shootDelay: 3
+  shootDuration: 2
 --- !u!114 &114208275319037824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,9 +370,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 4
-  shootingRate: 0.25
+  shootingRate: 5
   isEnemy: 1
   mana_cost: 0
+  shootDelay: 10
+  shootDuration: 2
 --- !u!114 &114516106814435846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -385,6 +390,8 @@ MonoBehaviour:
   shootingRate: 0.25
   isEnemy: 1
   mana_cost: 0
+  shootDelay: 0
+  shootDuration: 0
 --- !u!114 &114742323758378586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -397,9 +404,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 4
-  shootingRate: 0.25
+  shootingRate: 5
   isEnemy: 1
   mana_cost: 0
+  shootDelay: 10
+  shootDuration: 2
 --- !u!114 &114773320147212974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -412,9 +421,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 5
-  shootingRate: 0.25
+  shootingRate: 11
   isEnemy: 1
   mana_cost: 0
+  shootDelay: 20
+  shootDuration: 1
 --- !u!114 &114785577760586730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -443,9 +454,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 4
-  shootingRate: 0.25
+  shootingRate: 5
   isEnemy: 1
   mana_cost: 0
+  shootDelay: 10
+  shootDuration: 2
 --- !u!114 &114847890238466888
 MonoBehaviour:
   m_ObjectHideFlags: 1

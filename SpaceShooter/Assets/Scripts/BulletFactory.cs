@@ -200,7 +200,7 @@ public class BulletFactory : MonoBehaviour {
 
             if (bulletPool[i] == null)
             {
-                Debug.Log(bulletPool[i]);
+                //Debug.Log(bulletPool[i]);
                 bulletPool[i] = bullet;
                 return;
             }

@@ -8,6 +8,8 @@ public class EnemyScript : MonoBehaviour {
 	private MoveScript moveScript;
 	private WeaponScript[] weapons;
 	private bool alive = true;
+    public bool isBoss = false;
+    private bool isCameraFollowing = false;
 
 	void Awake()
 	{
@@ -48,8 +50,27 @@ public class EnemyScript : MonoBehaviour {
 		}
 		else
 		{
+            
             // On fait tirer toutes les armes automatiquement si il est vivant
             HandleShootWithWeapons();
+
+            //si c'est un boss, on lui donne le mouvement de la caméra à partir d'un moment
+            if (isBoss)
+            {
+                if (!isCameraFollowing)
+                {
+                    var dist = (transform.position - Camera.main.transform.position).z;
+                    var rightBorder = Camera.main.ViewportToWorldPoint(
+                        new Vector3(1, 0, dist)
+                    ).x;
+
+                    if (transform.position.x < rightBorder * 0.75f)
+                    {
+                        GetComponent<ScrollingScript>().enabled = true;
+                        isCameraFollowing = true;
+                    }
+                }
+            }
 
 			// Si L'ennemi n'a pas été détruit, il faut faire le ménage
 			if (GetComponent<Renderer>().IsVisibleFrom(Camera.main) == false)

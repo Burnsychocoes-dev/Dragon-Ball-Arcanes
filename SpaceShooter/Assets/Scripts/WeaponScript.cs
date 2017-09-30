@@ -76,7 +76,7 @@ public class WeaponScript : MonoBehaviour {
 
 			// On saisit la direction pour le mouvement
 			MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
-			if (move != null)
+			if (move != null && !move.characterLock && !move.characterLockInit)
 			{
 				
 				move.direction = this.transform.right; // ici la droite sera le devant de notre objet
@@ -102,7 +102,7 @@ public class WeaponScript : MonoBehaviour {
         shotTransform = GameObject.Find("Scripts").GetComponent<BulletFactory>().GetBullet(bulletType);
         // Position
         shotTransform.position = transform.position;
-        Debug.Log(shotTransform.position);
+        //Debug.Log(shotTransform.position);
         shotTransform.rotation = transform.rotation;
         //components du shot
         shotTransform.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
@@ -111,6 +111,9 @@ public class WeaponScript : MonoBehaviour {
         shotTransform.gameObject.GetComponent<ShotScript>().enabled = true;
         shotTransform.gameObject.GetComponent<HealthScript>().enabled = true;
         shotTransform.gameObject.GetComponent<Animator>().SetBool("pool", false);
+        //Si on doit viser, on calcule les coordonées et on attend l'animation si on est un projectile
+        shotTransform.gameObject.GetComponent<MoveScript>().CalculDirectionForHeadHunter();
+
 
         return shotTransform;
     }
