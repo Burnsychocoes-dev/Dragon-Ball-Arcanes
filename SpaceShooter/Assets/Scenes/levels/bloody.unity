@@ -157,6 +157,11 @@ Prefab:
       propertyPath: manaBarContent
       value: 
       objectReference: {fileID: 873180487}
+    - target: {fileID: 114097491850627740, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
+        type: 2}
+      propertyPath: hp
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27e22f6f8e4ad8547aa9bb766b02f508, type: 2}
   m_IsPrefabParent: 0
@@ -1019,7 +1024,7 @@ Transform:
   - {fileID: 893841643}
   - {fileID: 753007669}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1853305734
 Prefab:
@@ -1176,7 +1181,7 @@ Prefab:
     - target: {fileID: 224108081502873952, guid: b5d7ac72afdf6e74fae89630a9420d05,
         type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224108081502873952, guid: b5d7ac72afdf6e74fae89630a9420d05,
         type: 2}

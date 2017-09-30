@@ -40,7 +40,8 @@ public class MoveScript : MonoBehaviour {
 
     void Start () {
 		rigidbody2D = GetComponent<Rigidbody2D> ();
-        //Si on doit viser, on calcule les coordonées et on attend l'animation si on est pas un projectile
+        
+        
         
 	}
     
@@ -104,13 +105,16 @@ public class MoveScript : MonoBehaviour {
     }
 
 
-    private void CalculDirectionForHeadHunter()
+    public void CalculDirectionForHeadHunter()
     {
-        PlayerScript player = GameObject.FindObjectOfType<PlayerScript>();
-        Vector3 position = player.GetComponent<Transform>().position;
-        Debug.Log(position);
-        direction = position - transform.position;
-        Debug.Log(direction);
+        if (characterLockInit || characterLock)
+        {
+            PlayerScript player = GameObject.FindObjectOfType<PlayerScript>();
+            Vector3 position = player.GetComponent<Transform>().position;
+            //Debug.Log(position);
+            direction = position - transform.position;
+            //Debug.Log(direction);
+        }
     }
 
     private IEnumerator WaitForInitAnimation()

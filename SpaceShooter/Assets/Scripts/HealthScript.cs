@@ -60,8 +60,10 @@ public class HealthScript : MonoBehaviour {
 					if (myAnimator != null) {
                         myAnimator.SetTrigger("dead");
                         SoundEffectsHelper.Instance.MakeExplosionSound();
-                        Debug.Log("Je vais mourir");
-                        Debug.Log(gameObject);
+                        //Debug.Log("Je vais mourir");
+                        //Debug.Log(gameObject);
+                        // a la base, personne n'était considéré comme shot, donc où va la boule de goku ?
+
                         if (isEnemy && !isShot)
                         {
                             if(enemyScript)
@@ -69,7 +71,14 @@ public class HealthScript : MonoBehaviour {
                                 enemyScript.setDead();
                             }							
                             Destroy(gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
-                        }						
+                        }
+                        if (isShot)
+                        {
+                            //renvoyer le shot dans la pool;
+                            
+                            StartCoroutine(GiveBulletBackAfterT(myAnimator.GetCurrentAnimatorClipInfo(0).Length, GetComponent<Transform>()));
+                            
+                        }
                         
                         if (isCharacter)
                         {
@@ -88,6 +97,13 @@ public class HealthScript : MonoBehaviour {
 			}
 		}
 	}
+
+    private IEnumerator GiveBulletBackAfterT(float t, Transform bullet)
+    {
+        bullet.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+        yield return new WaitForSecondsRealtime(t);
+        GameObject.Find("Scripts").GetComponent<BulletFactory>().GiveBackBullet(bullet.GetComponent<ShotScript>().getBulletType(), bullet);
+    }
 
     public int GetMaxHp()
     {

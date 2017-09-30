@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3b1a0512b7b3dab42a270ec87fa66549
-timeCreated: 1506508431
+timeCreated: 1506792933
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -17,6 +17,25 @@ TextureImporter:
     21300020: damage2
     21300022: damage3
     21300024: damage4
+    21300026: megaboule1
+    21300028: megaboule2
+    21300030: megaboule3
+    21300032: megaboule4
+    21300034: megaboule5
+    21300036: megaboule6
+    21300038: megaboule7
+    21300040: megaboule8
+    21300042: laser
+    21300044: frieza_ult1
+    21300046: frieza_ult2
+    21300048: frieza_ult3
+    21300050: frieza_ult4
+    21300052: frieza_ult5
+    21300054: frieza_ult6
+    21300056: frieza_ult7
+    21300058: frieza_ult8
+    21300060: frieza_ulti0
+    21300062: frieza_ulti01
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -222,7 +241,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +255,7 @@ TextureImporter:
         width: 28
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,7 +269,7 @@ TextureImporter:
         width: 30
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -264,7 +283,273 @@ TextureImporter:
         width: 31
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megaboule1
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 621
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megaboule2
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 622
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megaboule3
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 621
+        width: 61
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megaboule4
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 621
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megaboule5
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 621
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megaboule6
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 622
+        width: 60
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megaboule7
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 621
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: megaboule8
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 621
+        width: 60
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: laser
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1104
+        width: 48
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: frieza_ult1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 563
+        width: 49
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: frieza_ult2
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 555
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: frieza_ult3
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 493
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: frieza_ult4
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 493
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: frieza_ult5
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 493
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: frieza_ult6
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 425
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: frieza_ult7
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 425
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: frieza_ult8
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 425
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: frieza_ulti0
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 502
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: frieza_ulti01
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 503
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
