@@ -11,7 +11,9 @@ public class WeaponScript : MonoBehaviour {
 	/// <summary>
 	/// Prefab du projectile
 	/// </summary>
-	public Transform shotPrefab;
+	public Transform shotPrefab;    
+    [SerializeField]
+    private BulletFactory.BulletType bulletType;
 
 	/// <summary>
 	/// Temps de rechargement entre deux tirs
@@ -52,15 +54,26 @@ public class WeaponScript : MonoBehaviour {
 		if (CanAttack)
 		{
 			shootCooldown = shootingRate;
+            //Ancienne version
+            // Création d'un objet copie du prefab
+            //var shotTransform = Instantiate(shotPrefab) as Transform;
 
-			// Création d'un objet copie du prefab
-			var shotTransform = Instantiate(shotPrefab) as Transform;
-
+            //nouvelle version
+            Transform shotTransform = GameObject.Find("Scripts").GetComponent<BulletFactory>().GetBullet(bulletType);
+            Debug.Log("bullet poped");
+            
 			// Position
 			shotTransform.position = transform.position;
+            Debug.Log(shotTransform.position);
 			shotTransform.rotation = transform.rotation;
-			// Propriétés du script
-			ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
+            shotTransform.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+            shotTransform.gameObject.GetComponent<Renderer>().enabled = true;            
+            shotTransform.gameObject.GetComponent<MoveScript>().enabled = true;
+            shotTransform.gameObject.GetComponent<ShotScript>().enabled = true;
+            shotTransform.gameObject.GetComponent<HealthScript>().enabled = true;
+
+            // Propriétés du script
+            ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
             SoundEffectsHelper.Instance.MakePlayerShotSound();
             if (shot != null)
 			{
@@ -90,4 +103,6 @@ public class WeaponScript : MonoBehaviour {
 			return shootCooldown <= 0f;
 		}
 	}
+
+    
 }

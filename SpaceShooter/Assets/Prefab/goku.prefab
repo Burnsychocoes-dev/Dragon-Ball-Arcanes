@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 4053488503514916, guid: 10035003eb8d505428ae685712e84f25, type: 2}
+  bulletType: 1
   shootingRate: 0.25
   isEnemy: 0
   mana_cost: 10
@@ -224,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  bulletType: 0
   isEnemyShot: 0
   isNotShot: 1
 --- !u!114 &114952747005329376

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ChangeSceneOnClickScript : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class ChangeSceneOnClickScript : MonoBehaviour
         SoundEffectsHelper.Instance.MakeButtonSelectedSound();
         float fadeTime = GameObject.Find("FadeScript").GetComponent<FadingScene>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
-        Application.LoadLevel(_nextScene);
+        SceneManager.LoadScene(_nextScene);
     }
 
     

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4320220593955734}
   - component: {fileID: 114338374257775384}
   - component: {fileID: 114283059307252036}
+  - component: {fileID: 114653285449096854}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -83,3 +84,20 @@ MonoBehaviour:
   jayceSound: {fileID: 8300000, guid: 3a23f17daa205f1489cf2f89a3aa6355, type: 3}
   buttonSelectSound: {fileID: 8300000, guid: fa1d68907a975ef49951e32256558471, type: 3}
   buttonSelectedSound: {fileID: 8300000, guid: 8974d3e5a303f664d9f941fb4e006ce9, type: 3}
+--- !u!114 &114653285449096854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123777053080230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec47c5adcd33c8642a72400c2eb11b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBulletPrefab: {fileID: 4053488503514916, guid: 10035003eb8d505428ae685712e84f25,
+    type: 2}
+  burterBulletPrefab: {fileID: 4360211968516162, guid: 9ecd3019498feca44b20e90a7be55c00,
+    type: 2}
+  playerBulletPoolLength: 150
+  burterBulletPoolLength: 150

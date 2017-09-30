@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  bulletType: 1
   isEnemyShot: 0
   isNotShot: 0
 --- !u!114 &114302054241646982
@@ -150,7 +151,7 @@ MonoBehaviour:
   hp: 5
   score_value: 0
   isEnemy: 0
-  isShot: 0
+  isShot: 1
   isCharacter: 0
 --- !u!114 &114609409671240400
 MonoBehaviour:
@@ -165,10 +166,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 10, y: 10}
   direction: {x: 1, y: 0}
-  limit_deplacement: 1
+  limitDeplacement: 1
   isShot: 1
-  character_lock: 0
-  character_lock_init: 0
+  characterLock: 0
+  characterLockInit: 0
 --- !u!212 &212083622548498528
 SpriteRenderer:
   m_ObjectHideFlags: 1

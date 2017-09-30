@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ChangeSceneAfterDelayScript : MonoBehaviour {
 
@@ -12,6 +13,6 @@ public class ChangeSceneAfterDelayScript : MonoBehaviour {
 		yield return new WaitForSeconds(_delay);
         float fadeTime = GameObject.Find("FadeScript").GetComponent<FadingScene>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
-        Application.LoadLevel(_nextScene);
+        SceneManager.LoadScene(_nextScene);
 	}
 }

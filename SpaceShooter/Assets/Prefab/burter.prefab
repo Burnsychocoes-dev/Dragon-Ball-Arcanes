@@ -171,8 +171,7 @@ MonoBehaviour:
   hp: 1
   score_value: 1
   isEnemy: 1
-  isBorder: 0
-  isFire: 0
+  isShot: 0
   isCharacter: 0
 --- !u!114 &114674553424881102
 MonoBehaviour:
@@ -186,8 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  bulletType: 0
   isEnemyShot: 1
-  isnotShot: 0
+  isNotShot: 1
 --- !u!114 &114808508668447422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 4360211968516162, guid: 9ecd3019498feca44b20e90a7be55c00, type: 2}
+  bulletType: 2
   shootingRate: 0.5
   isEnemy: 1
   mana_cost: 0
@@ -216,7 +217,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 1, y: 0}
   direction: {x: -1, y: 0}
-  limit_deplacement: 1
+  limitDeplacement: 1
+  isShot: 0
+  characterLock: 0
+  characterLockInit: 0
 --- !u!212 &212890389025468034
 SpriteRenderer:
   m_ObjectHideFlags: 1
