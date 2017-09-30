@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<LevelDescription>
+	<levelName>level1</levelName>
+	<ennemies>
+		<ennemyType>burter</ennemyType>
+		<ennemyType>burter_move</ennemyType>
+		<ennemyType>jayce</ennemyType>
+	</ennemies>
+	<spawnerRate>2</spawnerRate>
+	<numberOfWaves>3</numberOfWaves>
+</LevelDescription>
