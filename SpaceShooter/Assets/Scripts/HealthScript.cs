@@ -8,6 +8,7 @@ public class HealthScript : MonoBehaviour {
 	/// Points de vies
 	/// </summary>
 	public int hp = 1;
+    public int resistance = 1;
     public int score_value = 1;
     private int maxhp ;
 
@@ -42,7 +43,7 @@ public class HealthScript : MonoBehaviour {
 			// Tir allié
 			if (shot.isEnemyShot != isEnemy )
 			{
-				hp -= shot.damage;
+				hp -= (int) shot.damage  / resistance;
 
                 if (isCharacter)
                 {

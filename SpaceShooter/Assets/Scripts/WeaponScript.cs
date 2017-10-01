@@ -28,7 +28,11 @@ public class WeaponScript : MonoBehaviour {
 	public bool isEnemy = true;
     public int mana_cost = 0;
 
-	void Start()
+    // Multiplicateur de dommage permettant de gérer des modes super sayen ou autre
+    private int damageMultiplicator = 1;
+
+
+    void Start()
 	{
 		shootCooldown = 0f;
 	}
@@ -69,13 +73,14 @@ public class WeaponScript : MonoBehaviour {
             SoundEffectsHelper.Instance.MakePlayerShotSound();
             if (shot != null)
 			{
-				shot.isEnemyShot = isEnemy;
-                
+				shot.isEnemyShot = isEnemy;               
 			}
-            
 
-			// On saisit la direction pour le mouvement
-			MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
+            // On multiplie les dégats du shoot par le damage multiplicateur
+            shot.damage *= damageMultiplicator;
+
+            // On saisit la direction pour le mouvement
+            MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
 			if (move != null && !move.characterLock && !move.characterLockInit)
 			{
 				
@@ -118,5 +123,13 @@ public class WeaponScript : MonoBehaviour {
         return shotTransform;
     }
 
-    
+    public void SetDamageMultiplicator(int multiplicator)
+    {
+        damageMultiplicator = multiplicator;
+    }
+
+    public int GetDamageMultiplicator()
+    {
+        return damageMultiplicator;
+    }
 }

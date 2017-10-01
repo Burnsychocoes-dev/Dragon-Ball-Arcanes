@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8f03fe7ddf2b553459c05e0add8cb71c
-timeCreated: 1506626550
+timeCreated: 1506817316
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,6 +13,8 @@ TextureImporter:
     21300012: goku pre-death1
     21300014: goku pre-death2
     21300016: dash
+    21300018: Game Boy GBC - Dragon Ball Z Legendary Super Warriors - Goku_0
+    21300020: Game Boy GBC - Dragon Ball Z Legendary Super Warriors - Goku_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -203,6 +205,34 @@ TextureImporter:
         y: 324
         width: 23
         height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Game Boy GBC - Dragon Ball Z Legendary Super Warriors - Goku_0
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 274
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Game Boy GBC - Dragon Ball Z Legendary Super Warriors - Goku_1
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 274
+        width: 30
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

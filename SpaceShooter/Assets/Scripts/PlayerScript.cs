@@ -6,9 +6,6 @@ using UnityEngine;
 /// Contrôleur du joueur
 /// </summary>
 public class PlayerScript : MonoBehaviour {
-	/// <summary>
-	/// 1- La vitesse de déplacement
-	/// </summary>
 	// Use this for initialization
 	private Rigidbody2D rigidbody;
     private HealthScript health;
@@ -23,15 +20,16 @@ public class PlayerScript : MonoBehaviour {
     public float tp_cd = 1f; //cooldown de la teleportation
     private float tp_cd_count; // compteur du cooldown de la tp
     public float tp_mana_cost = 10;
-    // 2 - Stockage du mouvement
+    // Stockage du mouvement
     private Vector2 movement;
 
-
+    // Mode super sayen
+    private bool isSuperSayen = false;
 
 
     void Start () {
 		rigidbody = GetComponent<Rigidbody2D> ();
-		animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         health = GetComponent<HealthScript>();
         weapon = GetComponentInChildren<WeaponScript>();
         mana_max = mana;
@@ -47,42 +45,44 @@ public class PlayerScript : MonoBehaviour {
             tp_cd_count -= Time.deltaTime;
         }
 
-        // 3 - Récupérer les informations du clavier/manette
+        // Récupérer les informations du clavier/manette
         float inputX = Input.GetAxis("Horizontal");
 		float inputY = Input.GetAxis("Vertical");
         HandleMovement(inputX, inputY);
 
-        // 5 - Tir && Teleportations
+        // Tir
         bool shoot = Input.GetButton("Fire1");
         HandleShoot(shoot);
 
-
+        // Teleportation
         bool teleportup = Input.GetButtonDown("TeleportationUp");
         bool teleportdown = Input.GetButtonDown("TeleportationDown");
         HandleTeleportation(teleportdown, teleportup);
 
+        bool sayenModeButton = Input.GetButtonDown("SuperSayenMode");
+        HandleSuperSayenTransformation(sayenModeButton);
 	}
 
 	void FixedUpdate()
 	{
 		float inputX = Input.GetAxis("Horizontal");
 		if (inputX >= 0) {
-			animator.SetBool ("right", true);
+            animator.SetBool ("right", true);
 		} else if (inputX < 0) {
-			animator.SetBool ("right", false);
+            animator.SetBool ("right", false);
 		}
 		if (Input.GetButton ("Fire1")) {
-			animator.SetBool ("attack", true);         
+            animator.SetBool ("attack", true);         
             
 		} else {
-			animator.SetBool ("attack", false);
+            animator.SetBool ("attack", false);
 		}
         if (Input.GetButtonDown("TeleportationUp") || Input.GetButtonDown("TeleportationDown")){
             animator.SetTrigger("teleport");
         }
 
-		// 5 - Déplacement
-		rigidbody.velocity = movement;
+            // 5 - Déplacement
+            rigidbody.velocity = movement;
 
         // Update mana bar
         UpdateBar();
@@ -102,20 +102,23 @@ public class PlayerScript : MonoBehaviour {
                 case Item.ItemName.capsuleEnergy:
                     mana = mana_max;
                     break;
+                case Item.ItemName.boule1Etoile:
+                    ScoreScript.score += 50;
+                    break;
             }
             Destroy(collider.gameObject);
         }
     }
 
-        public void HandleMovement(float horizontal, float vertical)
+    public void HandleMovement(float horizontal, float vertical)
     {
-        // 4 - Calcul du mouvement
+        // Calcul du mouvement
         movement = new Vector2(
           speed.x * horizontal,
           speed.y * vertical);
 
 
-        // 6 - Déplacement limité au cadre de la caméra
+        // Déplacement limité au cadre de la caméra
         var dist = (transform.position - Camera.main.transform.position).z;
 
         var leftBorder = Camera.main.ViewportToWorldPoint(
@@ -143,11 +146,22 @@ public class PlayerScript : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = movement;
     }
 
+    public void ManaRegen()
+    {
+        float add_mana = mana_regen * Time.deltaTime * mana_regen_multiplicateur;
+        mana += add_mana;
+        if (mana > mana_max)
+        {
+            mana = mana_max;
+        }
+        if (mana <= 0)
+        {
+            mana = 0;
+        }
+    }
 
     public void HandleShoot(bool shoot)
     {
-        WeaponScript weapon = GetComponentInChildren<WeaponScript>();
-        //GameObject manamask = GameObject.Find("manamask");
         if (shoot)
         {
             if (weapon != null)
@@ -163,15 +177,9 @@ public class PlayerScript : MonoBehaviour {
         }
         else
         {
-            float add_mana = mana_regen * Time.deltaTime * mana_regen_multiplicateur;
-            mana += add_mana;
-            if (mana > mana_max)
-            {
-                mana = mana_max;
-            }
+            ManaRegen();
         }
     }
-
 
     public void HandleTeleportation(bool tpDown, bool tpUp)
     {
@@ -201,6 +209,35 @@ public class PlayerScript : MonoBehaviour {
         }
     }
 
+    public void HandleSuperSayenTransformation(bool sayenModeButton)
+    {
+        if (sayenModeButton)
+        {
+            if(CanTransformToSuperSayen && !isSuperSayen)
+            {
+                ActiveSuperSayenMode();
+                // TODO Handle a change of animation and active goku super sayen animation
+                animator.SetBool("superSayen", true);
+                gameObject.transform.localScale = new Vector3(2.1111f, 2.1111f, 0.42222f);
+            }
+            if(isSuperSayen)
+            {
+                CancelSuperSayenMode();
+                // TODO Handle a change of animation and cancel goku super sayen animation
+                animator.SetBool("superSayen", false);
+                gameObject.transform.localScale = new Vector3(5f, 5f, 1f);
+            }
+        }
+        else
+        {
+            if(mana <= 0)
+            {
+                mana = 0;
+                CancelSuperSayenMode();
+            }
+        }
+    }
+
     public void UpdateBar()
     {
         float manaPercent = (float)mana / mana_max;
@@ -209,13 +246,34 @@ public class PlayerScript : MonoBehaviour {
         GetComponent<BarScript>().MoveHealthBar(hpPercent);
     }
 
-
     public bool CanTp
     {
         get
         {
             return ((tp_cd_count <= 0f) && mana >= tp_mana_cost);
         }
+    }
+
+    public bool CanTransformToSuperSayen
+    {
+        get
+        {
+            return (mana == mana_max);
+        }
+    }
+
+    public void ActiveSuperSayenMode()
+    {
+        mana_regen_multiplicateur = -1;
+        health.resistance = 2;
+        weapon.SetDamageMultiplicator(2);
+    }
+
+    public void CancelSuperSayenMode()
+    {
+        mana_regen_multiplicateur = 1;
+        health.resistance = 1;
+        weapon.SetDamageMultiplicator(1);
     }
 
     void OnDestroy()
