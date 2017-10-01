@@ -26,6 +26,9 @@ public class PlayerScript : MonoBehaviour {
     // Mode super sayen
     private bool isSuperSayen = false;
 
+    // Mode tired
+    private bool isTired = false;
+
 
     void Start () {
 		rigidbody = GetComponent<Rigidbody2D> ();
@@ -34,55 +37,71 @@ public class PlayerScript : MonoBehaviour {
         weapon = GetComponentInChildren<WeaponScript>();
         mana_max = mana;
         tp_cd_count = 0;
-	}	
-	
+	}
 
-	void Update()
-	{
+
+    void Update()
+    {
         //Delai de tp/supersayan
         if (tp_cd_count > 0)
         {
             tp_cd_count -= Time.deltaTime;
         }
 
-        // Récupérer les informations du clavier/manette
-        float inputX = Input.GetAxis("Horizontal");
-		float inputY = Input.GetAxis("Vertical");
-        HandleMovement(inputX, inputY);
+        if (!isTired)
+        {
+            // Récupérer les informations du clavier/manette
+            float inputX = Input.GetAxis("Horizontal");
+            float inputY = Input.GetAxis("Vertical");
+            HandleMovement(inputX, inputY);
 
-        // Tir
-        bool shoot = Input.GetButton("Fire1");
-        HandleShoot(shoot);
+            // Tir
+            bool shoot = Input.GetButton("Fire1");
+            HandleShoot(shoot);
 
-        // Teleportation
-        bool teleportup = Input.GetButtonDown("TeleportationUp");
-        bool teleportdown = Input.GetButtonDown("TeleportationDown");
-        HandleTeleportation(teleportdown, teleportup);
+            // Teleportation
+            bool teleportup = Input.GetButtonDown("TeleportationUp");
+            bool teleportdown = Input.GetButtonDown("TeleportationDown");
+            HandleTeleportation(teleportdown, teleportup);
 
-        bool sayenModeButton = Input.GetButtonDown("SuperSayenMode");
-        HandleSuperSayenTransformation(sayenModeButton);
-	}
+            bool sayenModeButton = Input.GetButtonDown("SuperSayenMode");
+            HandleSuperSayenTransformation(sayenModeButton);
+        }
+        else
+        {
+            ManaRegenTiredState();
+        }
+    }
 
 	void FixedUpdate()
 	{
-		float inputX = Input.GetAxis("Horizontal");
-		if (inputX >= 0) {
-            animator.SetBool ("right", true);
-		} else if (inputX < 0) {
-            animator.SetBool ("right", false);
-		}
-		if (Input.GetButton ("Fire1")) {
-            animator.SetBool ("attack", true);         
-            
-		} else {
-            animator.SetBool ("attack", false);
-		}
-        if (Input.GetButtonDown("TeleportationUp") || Input.GetButtonDown("TeleportationDown")){
-            animator.SetTrigger("teleport");
-        }
+        if (!isTired)
+        {
+            float inputX = Input.GetAxis("Horizontal");
+            if (inputX >= 0)
+            {
+                animator.SetBool("right", true);
+            }
+            else if (inputX < 0)
+            {
+                animator.SetBool("right", false);
+            }
+            if (Input.GetButton("Fire1"))
+            {
+                animator.SetBool("attack", true);
 
-            // 5 - Déplacement
-            rigidbody.velocity = movement;
+            }
+            else
+            {
+                animator.SetBool("attack", false);
+            }
+            if (Input.GetButtonDown("TeleportationUp") || Input.GetButtonDown("TeleportationDown"))
+            {
+                animator.SetTrigger("teleport");
+            }
+        }
+        // Déplacement
+        rigidbody.velocity = movement;
 
         // Update mana bar
         UpdateBar();
@@ -160,6 +179,19 @@ public class PlayerScript : MonoBehaviour {
         }
     }
 
+    public void ManaRegenTiredState()
+    {
+        movement = new Vector2(0f, 0f);
+        float add_mana = mana_regen * Time.deltaTime * 5;
+        mana += add_mana;
+        if (mana > mana_max)
+        {
+            mana = mana_max;
+            isTired = false;
+            animator.SetBool("tired", false);
+        }
+    }
+
     public void HandleShoot(bool shoot)
     {
         if (shoot)
@@ -216,16 +248,14 @@ public class PlayerScript : MonoBehaviour {
             if(CanTransformToSuperSayen && !isSuperSayen)
             {
                 ActiveSuperSayenMode();
-                // TODO Handle a change of animation and active goku super sayen animation
+                //isSuperSayen = true;
                 animator.SetBool("superSayen", true);
-                //gameObject.transform.localScale = new Vector3(2.1111f, 2.1111f, 0.42222f);
             }
             if(isSuperSayen)
             {
                 CancelSuperSayenMode();
-                // TODO Handle a change of animation and cancel goku super sayen animation
+                //isSuperSayen = false;
                 animator.SetBool("superSayen", false);
-                //gameObject.transform.localScale = new Vector3(5f, 5f, 1f);
             }
         }
         else
@@ -234,6 +264,9 @@ public class PlayerScript : MonoBehaviour {
             {
                 mana = 0;
                 CancelSuperSayenMode();
+                isTired = true;
+                animator.SetBool("superSayen", false);
+                animator.SetBool("tired", true);
             }
         }
     }
