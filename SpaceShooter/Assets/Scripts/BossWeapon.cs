@@ -7,7 +7,9 @@ public class BossWeapon : WeaponScript {
     public bool firstWeapon = false;
     public float shootDuration = 0f;
     private float duration = 0f;
-    public GameObject[] next = null;
+    public GameObject[] next = null;    
+    
+    
 
     void Start()
     {
@@ -31,7 +33,7 @@ public class BossWeapon : WeaponScript {
         {
             duration -= Time.deltaTime;
         }
-        if( duration <= 0) // on a finit d'attaquer -> on relance la duration
+        if( duration <= 0) // on a finit d'attaquer -> on relance la duration et on désactive cette arme
         {
             duration = shootDuration;
             shootCooldown = 0f;
@@ -39,6 +41,7 @@ public class BossWeapon : WeaponScript {
             {
                 next[i].SetActive(true);
             }
+           // GetComponentInParent<Animator>().SetBool(animatorParameter, false);
             gameObject.SetActive(false);
         }
 
@@ -66,10 +69,12 @@ public class BossWeapon : WeaponScript {
             //Debug.Log("bullet poped");
 
 
+            //Audio et animation
+            AudioSource.PlayClipAtPoint(soundToPlay, transform.position);
+           
 
-            // Propriétés du script
-            ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
-            SoundEffectsHelper.Instance.MakePlayerShotSound();
+            // Propriétés du script            
+            ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();            
             if (shot != null)
             {
                 shot.isEnemyShot = isEnemy;

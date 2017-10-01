@@ -27,6 +27,8 @@ public class WeaponScript : MonoBehaviour {
 	protected float shootCooldown;
 	public bool isEnemy = true;
     public int mana_cost = 0;
+    public string animatorParameter = ""; //animation à faire
+    public AudioClip soundToPlay = null; //son à faire
 
     // Multiplicateur de dommage permettant de gérer des modes super sayen ou autre
     private int damageMultiplicator = 1;

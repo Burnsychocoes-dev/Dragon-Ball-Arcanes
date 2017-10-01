@@ -11,6 +11,7 @@ public class EnemyScript : MonoBehaviour {
     public bool isBoss = false;
     private bool isCameraFollowing = false;
 
+
 	void Awake()
 	{
 		// Récupération de toutes les armes de l'ennemi
@@ -119,6 +120,7 @@ public class EnemyScript : MonoBehaviour {
             {
                 if (weapon != null && weapon.enabled && weapon.CanAttack)
                 {
+                    GetComponent<Animator>().SetTrigger(weapon.animatorParameter);
                     weapon.Attack(true);
                     SoundEffectsHelper.Instance.MakeEnemyShotSound();
                 }
