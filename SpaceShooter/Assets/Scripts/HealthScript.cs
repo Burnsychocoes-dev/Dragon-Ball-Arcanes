@@ -74,9 +74,11 @@ public class HealthScript : MonoBehaviour {
                             if(enemyScript)
                             {
                                 enemyScript.setDead();
-                            }							
+                            }
                             //Destroy(gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+                            
                             StartCoroutine(GiveMobBackAfterT(myAnimator.GetCurrentAnimatorClipInfo(0).Length, GetComponent<Transform>()));
+                            
                         }
                         if (isShot)
                         {
@@ -106,10 +108,7 @@ public class HealthScript : MonoBehaviour {
 
     private void OnDestroy()
     {
-        if (isBossOnStoryMode)
-        {
-            GameObject.Find("Menu_win").GetComponent<Menu_death>().PopDeathMenu();
-        }
+        
     }
 
 
@@ -125,6 +124,10 @@ public class HealthScript : MonoBehaviour {
         mob.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         yield return new WaitForSecondsRealtime(t);
         GameObject.Find("Scripts").GetComponent<MobFactory>().GiveBackMob(mobType, mob);
+        if (isBossOnStoryMode)
+        {
+            GameObject.Find("Menu_win").GetComponent<Menu_death>().PopDeathMenu();
+        }
     }
 
     public int GetMaxHp()

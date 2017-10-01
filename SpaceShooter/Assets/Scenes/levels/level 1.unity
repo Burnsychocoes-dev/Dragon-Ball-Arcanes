@@ -208,6 +208,16 @@ Prefab:
       propertyPath: manaBarContent
       value: 
       objectReference: {fileID: 1446166789}
+    - target: {fileID: 114097491850627740, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
+        type: 2}
+      propertyPath: hp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114867128421406794, guid: 27e22f6f8e4ad8547aa9bb766b02f508,
+        type: 2}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27e22f6f8e4ad8547aa9bb766b02f508, type: 2}
   m_IsPrefabParent: 0

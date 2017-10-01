@@ -479,7 +479,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 87224918284011840b1be860ac87bf98, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.83
+  m_Volume: 0.46
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -746,6 +746,9 @@ MonoBehaviour:
   explosionSound: {fileID: 0}
   playerShotSound: {fileID: 0}
   enemyShotSound: {fileID: 0}
+  teleportationSound: {fileID: 0}
+  jayceSound: {fileID: 0}
+  enterSuperSayanSound: {fileID: 0}
   buttonSelectSound: {fileID: 8300000, guid: fa1d68907a975ef49951e32256558471, type: 3}
   buttonSelectedSound: {fileID: 8300000, guid: 8974d3e5a303f664d9f941fb4e006ce9, type: 3}
 --- !u!4 &1514528421
