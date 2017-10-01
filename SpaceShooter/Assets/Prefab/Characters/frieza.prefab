@@ -341,14 +341,14 @@ MonoBehaviour:
   shootingRate: 0.5
   isEnemy: 1
   mana_cost: 0
+  animatorParameter: attack_default
+  soundToPlay: {fileID: 8300000, guid: b6dd4ce027f21534f932e2383c96f417, type: 3}
   firstWeapon: 1
-  shootDuration: 2
+  shootDuration: 5
   next:
   - {fileID: 1257965534213824}
   - {fileID: 1106909230192814}
   - {fileID: 1347999129911848}
-  animatorParameter: attack_default
-  soundToPlay: {fileID: 0}
 --- !u!114 &114208275319037824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -376,14 +376,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 4
-  shootingRate: 1
+  shootingRate: 2.5
   isEnemy: 1
   mana_cost: 0
-  firstWeapon: 0
-  shootDuration: 2
-  next: []
   animatorParameter: 
-  soundToPlay: {fileID: 0}
+  soundToPlay: {fileID: 8300000, guid: 1b80a11cee964744785dd382c6c34893, type: 3}
+  firstWeapon: 0
+  shootDuration: 5
+  next: []
 --- !u!114 &114516106814435846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -399,11 +399,11 @@ MonoBehaviour:
   shootingRate: 0.25
   isEnemy: 1
   mana_cost: 0
+  animatorParameter: 
+  soundToPlay: {fileID: 0}
   firstWeapon: 0
   shootDuration: 0
   next: []
-  animatorParameter: 
-  soundToPlay: {fileID: 0}
 --- !u!114 &114742323758378586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,14 +416,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 4
-  shootingRate: 1
+  shootingRate: 2.5
   isEnemy: 1
   mana_cost: 0
-  firstWeapon: 0
-  shootDuration: 2
-  next: []
   animatorParameter: attack_ball
-  soundToPlay: {fileID: 0}
+  soundToPlay: {fileID: 8300000, guid: 1b80a11cee964744785dd382c6c34893, type: 3}
+  firstWeapon: 0
+  shootDuration: 5
+  next: []
 --- !u!114 &114773320147212974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -436,15 +436,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 5
-  shootingRate: 1
+  shootingRate: 2
   isEnemy: 1
   mana_cost: 0
+  animatorParameter: attack_ulti
+  soundToPlay: {fileID: 8300000, guid: 50100edfd923b6c44a93dc4386e6a0f9, type: 3}
   firstWeapon: 0
-  shootDuration: 1
+  shootDuration: 2
   next:
   - {fileID: 1603009666785948}
-  animatorParameter: attack_ulti
-  soundToPlay: {fileID: 0}
 --- !u!114 &114785577760586730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,11 +456,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ddfa5692567b054fa15ee587bd8ef8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 250
+  hp: 500
+  resistance: 1
   score_value: 500
   isEnemy: 1
+  isBossOnStoryMode: 0
   isShot: 0
   isCharacter: 0
+  mobType: 0
 --- !u!114 &114821178166775432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -473,15 +476,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 4
-  shootingRate: 1
+  shootingRate: 2.5
   isEnemy: 1
   mana_cost: 0
+  animatorParameter: 
+  soundToPlay: {fileID: 8300000, guid: 1b80a11cee964744785dd382c6c34893, type: 3}
   firstWeapon: 0
-  shootDuration: 2
+  shootDuration: 5
   next:
   - {fileID: 1510474770441240}
-  animatorParameter: 
-  soundToPlay: {fileID: 0}
 --- !u!114 &114847890238466888
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 114338374257775384}
   - component: {fileID: 114283059307252036}
   - component: {fileID: 114653285449096854}
+  - component: {fileID: 114147834990454036}
+  - component: {fileID: 114806730443794324}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -42,6 +44,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114147834990454036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123777053080230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25bf5fb2e9d79c459142c7ac90d89d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burterPrefab: {fileID: 4480014060877176, guid: e51aedfef13435f4081ec9a5e13763f3,
+    type: 2}
+  burterMovingPrefab: {fileID: 4700579121398584, guid: 9aa3524dd1d915649a48a4ff56e403a7,
+    type: 2}
+  jaycePrefab: {fileID: 4018259070115578, guid: 982f15a28d326c344862b6da6bd27c8b,
+    type: 2}
+  friezaPrefab: {fileID: 4481576460131750, guid: bd649757ad203704b8843b30e97deb74,
+    type: 2}
+  burterPoolLength: 5
+  burterMovingPoolLength: 3
+  jaycePoolLength: 1
+  friezaPoolLength: 1
 --- !u!114 &114283059307252036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,12 +79,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnBurterCd: 2
-  burter: {fileID: 1783596375111766, guid: e51aedfef13435f4081ec9a5e13763f3, type: 2}
+  burter: 1
   spawnBurterMovingCd: 5
-  burterMoving: {fileID: 1254212243844254, guid: 9aa3524dd1d915649a48a4ff56e403a7,
-    type: 2}
+  burterMoving: 2
   spawnJayceCd: 7
-  jayce: {fileID: 1744348409155994, guid: 982f15a28d326c344862b6da6bd27c8b, type: 2}
+  jayce: 3
+  spawnFriezaCd: 60
+  frieza: 4
+  senzuCd: 120
+  senzu: 0
+  boule1EtoileCd: 13
+  boule1Etoile: 1
+  capsuleCd: 115
+  capsule: 8
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -82,6 +114,8 @@ MonoBehaviour:
   enemyShotSound: {fileID: 8300000, guid: cbe3116e3ed7929409cd7c1c95e23434, type: 3}
   teleportationSound: {fileID: 8300000, guid: fc826ce8102969247a5e0021186d13d1, type: 3}
   jayceSound: {fileID: 8300000, guid: 3a23f17daa205f1489cf2f89a3aa6355, type: 3}
+  enterSuperSayanSound: {fileID: 8300000, guid: 167acf60ecd0925438c8cb460f22046a,
+    type: 3}
   buttonSelectSound: {fileID: 8300000, guid: fa1d68907a975ef49951e32256558471, type: 3}
   buttonSelectedSound: {fileID: 8300000, guid: 8974d3e5a303f664d9f941fb4e006ce9, type: 3}
 --- !u!114 &114653285449096854
@@ -106,9 +140,34 @@ MonoBehaviour:
   friezaUltiBulletPrefab: {fileID: 4610918435023648, guid: 7b9b17961c1a6a3439e948fda3b55042,
     type: 2}
   friezaRayonBulletPrefab: {fileID: 0}
-  playerBulletPoolLength: 30
-  burterBulletPoolLength: 50
-  friezaDefaultBulletPoolLength: 0
+  playerBulletPoolLength: 25
+  burterBulletPoolLength: 25
+  friezaDefaultBulletPoolLength: 1
   friezaMegaBulletPoolLength: 0
   friezaUltiBulletPoolLength: 0
   friezaRayonBulletPoolLength: 0
+--- !u!114 &114806730443794324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123777053080230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6032c5445c17b1e4fb58ee9e71e651b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  senzu: {fileID: 4719469354330474, guid: f2644115a8a151a4d88774cfb5e788a9, type: 2}
+  boule1Etoile: {fileID: 4211474105321174, guid: 419399fb18cb28140a64c6b244735b77,
+    type: 2}
+  boule2Etoile: {fileID: 0}
+  boule3Etoile: {fileID: 0}
+  boule4Etoile: {fileID: 0}
+  boule5Etoile: {fileID: 0}
+  boule6Etoile: {fileID: 0}
+  boule7Etoile: {fileID: 0}
+  capsuleEnergy: {fileID: 4629762579629782, guid: a0b8c667ecb6924469347b6ad57b313e,
+    type: 2}
+  senzuPoolLength: 1
+  bouleEtoilePoolLength: 1
+  capsuleEnergyPoolLength: 1

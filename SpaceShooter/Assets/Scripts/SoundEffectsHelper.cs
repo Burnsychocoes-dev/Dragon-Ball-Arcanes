@@ -18,6 +18,7 @@ public class SoundEffectsHelper : MonoBehaviour
     public AudioClip enemyShotSound;
     public AudioClip teleportationSound;
     public AudioClip jayceSound;
+    public AudioClip enterSuperSayanSound;
     public AudioClip buttonSelectSound;
     public AudioClip buttonSelectedSound;
     
@@ -63,6 +64,11 @@ public class SoundEffectsHelper : MonoBehaviour
     public void MakeJayceSound()
     {
         MakeSound(jayceSound);
+    }
+
+    public void MakeEnterSuperSayanSound()
+    {
+        MakeSound(enterSuperSayanSound);
     }
 
     /// <summary>

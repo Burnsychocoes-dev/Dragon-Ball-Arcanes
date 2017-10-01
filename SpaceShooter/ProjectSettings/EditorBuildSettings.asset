@@ -17,6 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/levels/bloody.unity
     guid: 085ff0353abbb49418151d8c98b446fb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/tests/leveltest.unity
     guid: e522ca1ed4a74c344a814606e91c2150

@@ -384,6 +384,26 @@ Prefab:
       propertyPath: spawnPoints.Array.data[4]
       value: 
       objectReference: {fileID: 562774014}
+    - target: {fileID: 114283059307252036, guid: aa783f6a678200f41877ca31b537110f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283059307252036, guid: aa783f6a678200f41877ca31b537110f,
+        type: 2}
+      propertyPath: senzuCd
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283059307252036, guid: aa783f6a678200f41877ca31b537110f,
+        type: 2}
+      propertyPath: boule1EtoileCd
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283059307252036, guid: aa783f6a678200f41877ca31b537110f,
+        type: 2}
+      propertyPath: capsuleCd
+      value: 43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa783f6a678200f41877ca31b537110f, type: 2}
   m_IsPrefabParent: 0
@@ -1001,6 +1021,11 @@ Prefab:
     - target: {fileID: 4978669139464814, guid: ec1be842f66834a48b4d602aacbc57d2, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82362427617317534, guid: ec1be842f66834a48b4d602aacbc57d2,
+        type: 2}
+      propertyPath: Priority
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec1be842f66834a48b4d602aacbc57d2, type: 2}

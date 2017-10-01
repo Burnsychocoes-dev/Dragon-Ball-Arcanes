@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114097491850627740}
   - component: {fileID: 114828669628724288}
   - component: {fileID: 114867128421406794}
+  - component: {fileID: 82956444517688140}
   m_Layer: 0
   m_Name: goku
   m_TagString: Untagged
@@ -133,6 +134,86 @@ PolygonCollider2D:
       - {x: 0.16, y: -0.13499999}
       - {x: 0.16, y: 0.175}
       - {x: 0.14, y: 0.205}
+--- !u!82 &82956444517688140
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729523143674214}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a29d4b3c6f08cbd4f9e07a7ee29032bb, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.55
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0.72
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95000857151131714
 Animator:
   serializedVersion: 3
@@ -162,8 +243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  resistance: 1
   score_value: 1
   isEnemy: 0
+  isBossOnStoryMode: 0
   isShot: 0
   isCharacter: 1
 --- !u!114 &114357398706630790
@@ -197,6 +280,8 @@ MonoBehaviour:
   shootingRate: 0.25
   isEnemy: 0
   mana_cost: 10
+  animatorParameter: 
+  soundToPlay: {fileID: 0}
 --- !u!114 &114828669628724288
 MonoBehaviour:
   m_ObjectHideFlags: 1

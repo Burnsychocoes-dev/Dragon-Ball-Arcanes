@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e4709f994ad944c829476dcc4b6374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
 --- !u!114 &114771701385874654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,6 +190,8 @@ MonoBehaviour:
   shootingRate: 0.5
   isEnemy: 1
   mana_cost: 0
+  animatorParameter: 
+  soundToPlay: {fileID: 0}
 --- !u!114 &114856894454143066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,9 +203,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ddfa5692567b054fa15ee587bd8ef8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2
+  hp: 5
+  resistance: 1
   score_value: 3
   isEnemy: 1
+  isBossOnStoryMode: 0
   isShot: 0
   isCharacter: 0
 --- !u!114 &114906911697690400

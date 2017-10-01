@@ -55,7 +55,7 @@ public class WeaponScript : MonoBehaviour {
 	/// <summary>
 	/// Création d'un projectile si possible
 	/// </summary>
-	public void Attack(bool isEnemy)
+	public virtual void Attack(bool isEnemy)
 	{
 		if (CanAttack)
 		{
@@ -95,7 +95,7 @@ public class WeaponScript : MonoBehaviour {
 	/// <summary>
 	/// L'arme est chargée ?
 	/// </summary>
-	public bool CanAttack
+	public virtual bool CanAttack
 	{
         
         get{

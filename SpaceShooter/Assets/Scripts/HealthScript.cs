@@ -16,10 +16,14 @@ public class HealthScript : MonoBehaviour {
 	/// Ennemi ou joueur ?
 	/// </summary>
 	public bool isEnemy = true;
+    public bool isBossOnStoryMode = false;
     public bool isShot = false;
     public bool isCharacter = false;
-    
-	private Animator myAnimator;
+
+    [SerializeField]
+    private MobFactory.MobType mobType;
+
+    private Animator myAnimator;
 	private EnemyScript enemyScript;
 
 
@@ -71,7 +75,8 @@ public class HealthScript : MonoBehaviour {
                             {
                                 enemyScript.setDead();
                             }							
-                            Destroy(gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+                            //Destroy(gameObject, myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+                            StartCoroutine(GiveMobBackAfterT(myAnimator.GetCurrentAnimatorClipInfo(0).Length, GetComponent<Transform>()));
                         }
                         if (isShot)
                         {
@@ -99,11 +104,27 @@ public class HealthScript : MonoBehaviour {
 		}
 	}
 
+    private void OnDestroy()
+    {
+        if (isBossOnStoryMode)
+        {
+            GameObject.Find("Menu_win").GetComponent<Menu_death>().PopDeathMenu();
+        }
+    }
+
+
     private IEnumerator GiveBulletBackAfterT(float t, Transform bullet)
     {
         bullet.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         yield return new WaitForSecondsRealtime(t);
         GameObject.Find("Scripts").GetComponent<BulletFactory>().GiveBackBullet(bullet.GetComponent<ShotScript>().getBulletType(), bullet);
+    }
+
+    private IEnumerator GiveMobBackAfterT(float t, Transform mob)
+    {
+        mob.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+        yield return new WaitForSecondsRealtime(t);
+        GameObject.Find("Scripts").GetComponent<MobFactory>().GiveBackMob(mobType, mob);
     }
 
     public int GetMaxHp()

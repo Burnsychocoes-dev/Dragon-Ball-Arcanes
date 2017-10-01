@@ -125,7 +125,8 @@ public class PlayerScript : MonoBehaviour {
                     ScoreScript.score += 50;
                     break;
             }
-            Destroy(collider.gameObject);
+            //Destroy(collider.gameObject);
+            GameObject.Find("Scripts").GetComponent<ItemFactory>().GiveBackItem(item.GetItemName(), collider.transform);
         }
     }
 
@@ -184,9 +185,9 @@ public class PlayerScript : MonoBehaviour {
         movement = new Vector2(0f, 0f);
         float add_mana = mana_regen * Time.deltaTime * 5;
         mana += add_mana;
-        if (mana > mana_max)
+        if (mana > mana_max/4)
         {
-            mana = mana_max;
+            mana = mana_max/4;
             isTired = false;
             animator.SetBool("tired", false);
         }
@@ -248,14 +249,19 @@ public class PlayerScript : MonoBehaviour {
             if(CanTransformToSuperSayen && !isSuperSayen)
             {
                 ActiveSuperSayenMode();
-                //isSuperSayen = true;
+                isSuperSayen = true;
                 animator.SetBool("superSayen", true);
+                SoundEffectsHelper.Instance.MakeEnterSuperSayanSound();
+                GetComponent<AudioSource>().enabled = true;
+                
             }
-            if(isSuperSayen)
+            else if(isSuperSayen)
             {
                 CancelSuperSayenMode();
-                //isSuperSayen = false;
+                isSuperSayen = false;
                 animator.SetBool("superSayen", false);
+                GetComponent<AudioSource>().enabled = false;
+                
             }
         }
         else
@@ -291,7 +297,7 @@ public class PlayerScript : MonoBehaviour {
     {
         get
         {
-            return (mana == mana_max);
+            return (mana > mana_max/2);
         }
     }
 
@@ -300,6 +306,8 @@ public class PlayerScript : MonoBehaviour {
         mana_regen_multiplicateur = -1;
         health.resistance = 2;
         weapon.SetDamageMultiplicator(2);
+        speed.x *= 1.5f;
+        speed.y *= 1.5f;
     }
 
     public void CancelSuperSayenMode()
@@ -307,6 +315,8 @@ public class PlayerScript : MonoBehaviour {
         mana_regen_multiplicateur = 1;
         health.resistance = 1;
         weapon.SetDamageMultiplicator(1);
+        speed.x /= 1.5f;
+        speed.y /= 1.5f;
     }
 
     void OnDestroy()

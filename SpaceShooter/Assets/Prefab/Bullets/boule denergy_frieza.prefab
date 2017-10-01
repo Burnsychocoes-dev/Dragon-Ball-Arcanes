@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df116c297c4932e49b4e54bcd9bdf1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 7
   bulletType: 3
   isEnemyShot: 1
   isNotShot: 0
@@ -158,10 +158,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  resistance: 1
   score_value: 0
   isEnemy: 1
+  isBossOnStoryMode: 0
   isShot: 1
   isCharacter: 0
+  mobType: 0
 --- !u!212 &212755732697180892
 SpriteRenderer:
   m_ObjectHideFlags: 1

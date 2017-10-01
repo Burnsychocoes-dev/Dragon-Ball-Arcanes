@@ -122,9 +122,25 @@ public class EnemyScript : MonoBehaviour {
                 {
                     GetComponent<Animator>().SetTrigger(weapon.animatorParameter);
                     weapon.Attack(true);
-                    SoundEffectsHelper.Instance.MakeEnemyShotSound();
+                    if (!isBoss)
+                    {
+                        SoundEffectsHelper.Instance.MakeEnemyShotSound();
+                    }
                 }
             }
+        }
+    }
+    public void unSpawn()
+    {
+        hasSpawn = false;
+        alive = true;
+        GetComponent<Collider2D>().enabled = false;
+        // -- Mouvement
+        moveScript.enabled = false;
+        // -- Tir
+        foreach (WeaponScript weapon in weapons)
+        {
+            weapon.enabled = false;
         }
     }
 

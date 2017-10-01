@@ -55,7 +55,7 @@ public class BossWeapon : WeaponScript {
     /// <summary>
     /// Création d'un projectile si possible
     /// </summary>
-    new public void Attack(bool isEnemy)
+    public override void Attack(bool isEnemy)
     {
         if (CanAttack)
         {
@@ -95,13 +95,13 @@ public class BossWeapon : WeaponScript {
 
     /// <summary>
     /// L'arme est chargée ?
-    /// </summary>
-    new public bool CanAttack
+    /// </summary>s
+    public override bool CanAttack
     {
 
         get
         {
-            Debug.Log("je shoot en boss");
+            //Debug.Log("je shoot en boss");
             return (shootCooldown <= 0f && duration >0);
         }
     }
