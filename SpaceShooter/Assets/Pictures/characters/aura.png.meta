@@ -1,9 +1,30 @@
 fileFormatVersion: 2
-guid: b58dfcb17b69ac7479f2969ae9f7bc2c
-timeCreated: 1506810064
+guid: 48b11628543076644a589deb16b308bf
+timeCreated: 1506849415
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: aura_0
+    21300002: aura_1
+    21300004: aura_2
+    21300006: aura_3
+    21300008: aura_4
+    21300010: aura_5
+    21300012: aura_6
+    21300014: aura_7
+    21300016: aura_8
+    21300018: aura_9
+    21300020: aura_10
+    21300022: aura_11
+    21300024: aura_12
+    21300026: aura_13
+    21300028: aura_14
+    21300030: aura_15
+    21300032: aura_16
+    21300034: aura_17
+    21300036: aura_18
+    21300038: aura_19
+    21300040: aura_20
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -30,7 +51,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -39,7 +60,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -63,9 +84,311 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: aura_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 149
+        width: 61
+        height: 74
+      alignment: 9
+      pivot: {x: 0.50000006, y: 0.28820884}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_1
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 149
+        width: 66
+        height: 77
+      alignment: 9
+      pivot: {x: 0.5079154, y: 0.2828912}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_2
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 150
+        width: 60
+        height: 76
+      alignment: 9
+      pivot: {x: 0.49129307, y: 0.27316064}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 151
+        width: 56
+        height: 75
+      alignment: 9
+      pivot: {x: 0.4906709, y: 0.26317036}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_4
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 151
+        width: 66
+        height: 75
+      alignment: 9
+      pivot: {x: 0.50503725, y: 0.25177652}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_5
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 151
+        width: 65
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5069547, y: 0.2144938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_6
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 150
+        width: 58
+        height: 76
+      alignment: 9
+      pivot: {x: 0.47572222, y: 0.23796262}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_7
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 150
+        width: 61
+        height: 75
+      alignment: 9
+      pivot: {x: 0.5039303, y: 0.2378355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_8
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 154
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_9
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 57
+        width: 62
+        height: 75
+      alignment: 9
+      pivot: {x: 0.50424355, y: 0.2614672}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_10
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 57
+        width: 57
+        height: 77
+      alignment: 9
+      pivot: {x: 0.5148966, y: 0.25463808}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_11
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 58
+        width: 57
+        height: 75
+      alignment: 9
+      pivot: {x: 0.44872564, y: 0.25202006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_12
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 60
+        width: 53
+        height: 72
+      alignment: 9
+      pivot: {x: 0.51096386, y: 0.26593938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_13
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 51
+        width: 61
+        height: 74
+      alignment: 9
+      pivot: {x: 0.5361313, y: 0.24981731}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_14
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 52
+        width: 64
+        height: 79
+      alignment: 9
+      pivot: {x: 0.50682116, y: 0.23752072}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_15
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 54
+        width: 55
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5111384, y: 0.23937236}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_16
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 56
+        width: 56
+        height: 73
+      alignment: 9
+      pivot: {x: 0.5189514, y: 0.24558446}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_17
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 55
+        width: 62
+        height: 74
+      alignment: 9
+      pivot: {x: 0.49475294, y: 0.2604331}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_18
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 54
+        width: 64
+        height: 79
+      alignment: 9
+      pivot: {x: 0.49694633, y: 0.26001287}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_19
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 55
+        width: 55
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5030251, y: 0.25697076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aura_20
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 149
+        width: 58
+        height: 71
+      alignment: 9
+      pivot: {x: 0.4972271, y: 0.2576367}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 

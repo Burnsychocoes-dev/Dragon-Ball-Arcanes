@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9be6332b871e0e04d81703ae474ce359
-timeCreated: 1506815230
+timeCreated: 1506845852
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -85,10 +85,10 @@ TextureImporter:
         x: 9
         y: 20
         width: 192
-        height: 191
+        height: 190
       alignment: 9
       pivot: {x: 0.59636706, y: 0.41100144}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 68, y: 14, z: 56, w: 66}
       outline: []
       physicsShape: []
       tessellationDetail: 0

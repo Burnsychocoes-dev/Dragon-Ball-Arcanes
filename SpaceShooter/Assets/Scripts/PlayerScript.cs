@@ -218,14 +218,14 @@ public class PlayerScript : MonoBehaviour {
                 ActiveSuperSayenMode();
                 // TODO Handle a change of animation and active goku super sayen animation
                 animator.SetBool("superSayen", true);
-                gameObject.transform.localScale = new Vector3(2.1111f, 2.1111f, 0.42222f);
+                //gameObject.transform.localScale = new Vector3(2.1111f, 2.1111f, 0.42222f);
             }
             if(isSuperSayen)
             {
                 CancelSuperSayenMode();
                 // TODO Handle a change of animation and cancel goku super sayen animation
                 animator.SetBool("superSayen", false);
-                gameObject.transform.localScale = new Vector3(5f, 5f, 1f);
+                //gameObject.transform.localScale = new Vector3(5f, 5f, 1f);
             }
         }
         else
