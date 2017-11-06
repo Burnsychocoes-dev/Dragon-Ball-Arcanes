@@ -51,42 +51,31 @@ public class PlayerScript : MonoBehaviour {
         if (!isTired)
         {
             // Récupérer les informations du clavier/manette
-            float inputX = Input.GetAxis("Horizontal");
-            float inputY = Input.GetAxis("Vertical");
+            float inputX = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalCroix");
+            float inputY = Input.GetAxis("Vertical") + Input.GetAxis("VerticalCroix");
             HandleMovement(inputX, inputY);
 
             // Tir
-            bool shoot = Input.GetButton("Fire1");
+            bool shoot = Input.GetButton("Fire1") || Input.GetButton("buttonX");
             HandleShoot(shoot);
 
             // Teleportation
-            bool teleportup = Input.GetButtonDown("TeleportationUp");
-            bool teleportdown = Input.GetButtonDown("TeleportationDown");
+            bool teleportup = Input.GetButtonDown("TeleportationUp") || Input.GetButtonDown("buttonY");
+            bool teleportdown = Input.GetButtonDown("TeleportationDown") || Input.GetButtonDown("buttonA");
             HandleTeleportation(teleportdown, teleportup);
 
-            bool sayenModeButton = Input.GetButtonDown("SuperSayenMode");
+            bool sayenModeButton = Input.GetButtonDown("SuperSayenMode") || Input.GetButtonDown("buttonB");
             HandleSuperSayenTransformation(sayenModeButton);
-        }
-        else
-        {
-            ManaRegenTiredState();
-        }
-    }
 
-	void FixedUpdate()
-	{
-        if (!isTired)
-        {
-            float inputX = Input.GetAxis("Horizontal");
             if (inputX >= 0)
             {
                 animator.SetBool("right", true);
             }
-            else if (inputX < 0)
+            else
             {
                 animator.SetBool("right", false);
             }
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButton("Fire1") || Input.GetButton("buttonX"))
             {
                 animator.SetBool("attack", true);
 
@@ -95,11 +84,20 @@ public class PlayerScript : MonoBehaviour {
             {
                 animator.SetBool("attack", false);
             }
-            if (Input.GetButtonDown("TeleportationUp") || Input.GetButtonDown("TeleportationDown"))
+            if (Input.GetButtonDown("TeleportationUp") || Input.GetButtonDown("buttonY") || Input.GetButtonDown("TeleportationDown") || Input.GetButtonDown("buttonA"))
             {
                 animator.SetTrigger("teleport");
             }
         }
+        else
+        {
+            ManaRegenTiredState();
+        }
+
+    }
+
+	void FixedUpdate()
+	{
         // Déplacement
         rigidbody.velocity = movement;
 

@@ -1,6 +1,6 @@
 Your goal is to kill everything
-press "a" to shoot
-"space" for supersayan (need energy > 50% to activate)
+press "a" ou X to shoot
+"space" ou B for supersayan (need energy > 50% to activate)
 directional keys to move
-"f" to teleport to the top
-"d" to teleport to the bottom
+"f" ou Y to teleport to the top
+"d" ou A to teleport to the bottom
